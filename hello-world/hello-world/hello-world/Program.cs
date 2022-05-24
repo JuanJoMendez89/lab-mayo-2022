@@ -10,6 +10,7 @@ namespace hello_world
     {
         static void Main(string[] args)
         {
+            // Prueba
             Console.WriteLine("Bienvenido al LAB!!");
             Console.ReadLine();
         }
