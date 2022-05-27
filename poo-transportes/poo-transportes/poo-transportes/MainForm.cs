@@ -97,12 +97,12 @@ namespace poo_transportes
             foreach (TransportePublico t in _listaTransportes) {
                 if (t.GetType() == typeof(Omnibus)) {
 
-                    sbOmnibus.Append(String.Format("Omnibus {0}: {1} pasajeros.\r\n", indexOmnibus + 1, t.GetPasajeros()));
+                    sbOmnibus.Append(String.Format("Omnibus {0}: {1} pasajeros.\r\n", indexOmnibus + 1, t.pasajeros));
                     indexOmnibus++;
                 }
 
                 if (t.GetType() == typeof(Taxi)) {
-                    sbTaxis.Append(String.Format("Taxi {0}: {1} pasajeros.\r\n", indexTaxis + 1, t.GetPasajeros()));
+                    sbTaxis.Append(String.Format("Taxi {0}: {1} pasajeros.\r\n", indexTaxis + 1, t.pasajeros));
                     indexTaxis++;
                 }
             }

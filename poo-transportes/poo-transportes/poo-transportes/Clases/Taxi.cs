@@ -14,29 +14,12 @@ namespace poo_transportes.Clases
 
         public override string Avanzar()
         {
-            if (_isDetenido)
-            {
-                _isDetenido = false;
-                return "El Taxi arrancó";
-            }
-            else
-            {
-                return "El Taxi ya se encuentra en movimiento";
-            }
-
+            throw new NotImplementedException();
         }
 
         public override string Detenerse()
         {
-            if (!_isDetenido)
-            {
-                _isDetenido = true;
-                return "El Taxi se detuvo";
-            }
-            else {
-                return "El Taxi ya se encuentra detenido";
-            }
-
+            throw new NotImplementedException();
         }
     }
 }
