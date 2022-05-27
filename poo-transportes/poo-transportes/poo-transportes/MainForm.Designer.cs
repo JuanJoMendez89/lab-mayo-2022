@@ -57,7 +57,7 @@ namespace poo_transportes
             this.grpOmnibus.Location = new System.Drawing.Point(15, 12);
             this.grpOmnibus.Name = "grpOmnibus";
             this.grpOmnibus.Size = new System.Drawing.Size(313, 128);
-            this.grpOmnibus.TabIndex = 99;
+            this.grpOmnibus.TabIndex = 1;
             this.grpOmnibus.TabStop = false;
             this.grpOmnibus.Text = "Omnibus";
             // 
@@ -66,7 +66,7 @@ namespace poo_transportes
             this.btnAddOmnibus.Location = new System.Drawing.Point(119, 80);
             this.btnAddOmnibus.Name = "btnAddOmnibus";
             this.btnAddOmnibus.Size = new System.Drawing.Size(75, 23);
-            this.btnAddOmnibus.TabIndex = 6;
+            this.btnAddOmnibus.TabIndex = 3;
             this.btnAddOmnibus.Text = "Agregar";
             this.btnAddOmnibus.UseVisualStyleBackColor = true;
             this.btnAddOmnibus.Click += new System.EventHandler(this.btnAddOmnibus_Click);
@@ -77,7 +77,7 @@ namespace poo_transportes
             this.txtPasajerosOmnibus.MaxLength = 3;
             this.txtPasajerosOmnibus.Name = "txtPasajerosOmnibus";
             this.txtPasajerosOmnibus.Size = new System.Drawing.Size(100, 20);
-            this.txtPasajerosOmnibus.TabIndex = 5;
+            this.txtPasajerosOmnibus.TabIndex = 2;
             this.txtPasajerosOmnibus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPasajerosOmnibus_KeyPress);
             // 
             // lblCantidadOmnibus
@@ -97,7 +97,7 @@ namespace poo_transportes
             this.groupBox1.Location = new System.Drawing.Point(15, 161);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(313, 128);
-            this.groupBox1.TabIndex = 99;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Taxi";
             // 
@@ -106,7 +106,7 @@ namespace poo_transportes
             this.btnAddTaxi.Location = new System.Drawing.Point(119, 81);
             this.btnAddTaxi.Name = "btnAddTaxi";
             this.btnAddTaxi.Size = new System.Drawing.Size(75, 23);
-            this.btnAddTaxi.TabIndex = 4;
+            this.btnAddTaxi.TabIndex = 6;
             this.btnAddTaxi.Text = "Agregar";
             this.btnAddTaxi.UseVisualStyleBackColor = true;
             this.btnAddTaxi.Click += new System.EventHandler(this.btnAddTaxi_Click);
@@ -117,7 +117,7 @@ namespace poo_transportes
             this.txtPasajerosTaxi.MaxLength = 1;
             this.txtPasajerosTaxi.Name = "txtPasajerosTaxi";
             this.txtPasajerosTaxi.Size = new System.Drawing.Size(100, 20);
-            this.txtPasajerosTaxi.TabIndex = 3;
+            this.txtPasajerosTaxi.TabIndex = 5;
             this.txtPasajerosTaxi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPasajerosTaxi_KeyPress);
             // 
             // lblCantidadTaxis
@@ -135,7 +135,7 @@ namespace poo_transportes
             this.btnProcesar.Location = new System.Drawing.Point(97, 314);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(75, 23);
-            this.btnProcesar.TabIndex = 1;
+            this.btnProcesar.TabIndex = 7;
             this.btnProcesar.Text = "Procesar";
             this.btnProcesar.UseVisualStyleBackColor = true;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
@@ -197,7 +197,7 @@ namespace poo_transportes
             this.btnReset.Location = new System.Drawing.Point(178, 314);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 2;
+            this.btnReset.TabIndex = 8;
             this.btnReset.Text = "Reiniciar";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -214,6 +214,7 @@ namespace poo_transportes
             this.Controls.Add(this.grpOmnibus);
             this.Name = "MainForm";
             this.Text = "tp1 - Poo - Transportes";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.grpOmnibus.ResumeLayout(false);
             this.grpOmnibus.PerformLayout();
             this.groupBox1.ResumeLayout(false);

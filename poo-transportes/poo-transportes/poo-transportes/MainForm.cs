@@ -22,6 +22,11 @@ namespace poo_transportes
             InitializeComponent();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtPasajerosOmnibus;
+        }
+
         private void btnAddOmnibus_Click(object sender, EventArgs e)
         {
             int pasajeros = String.IsNullOrEmpty(txtPasajerosOmnibus.Text) ? 0 : Convert.ToInt32(txtPasajerosOmnibus.Text);
@@ -138,6 +143,8 @@ namespace poo_transportes
 
             btnProcesar.Enabled = false;
             btnReset.Enabled = false;
+
+            this.ActiveControl = txtPasajerosOmnibus;
         }
 
         private void txtPasajerosOmnibus_KeyPress(object sender, KeyPressEventArgs e)
@@ -157,5 +164,7 @@ namespace poo_transportes
                 e.Handled = true;
             }
         }
+
+
     }
 }
