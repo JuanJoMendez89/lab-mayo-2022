@@ -15,17 +15,28 @@ namespace poo_transportes.Clases
         public override string Avanzar()
         {
             if (_isDetenido)
+            {
+                _isDetenido = false;
                 return "El omnibus arrancó";
+            }
             else
+            {
                 return "El omnibus ya se encuentra en movimiento";
+            }
+
         }
 
         public override string Detenerse()
         {
             if (!_isDetenido)
-                return "El omnibus arrancó";
-            else
-                return "El omnibus ya se encuentra en detenido";
+            {
+                _isDetenido = true;
+                return "El omnibus se detuvo";
+            }
+            else {
+                return "El omnibus ya se encuentra detenido";
+            }
+
         }
 
     }
