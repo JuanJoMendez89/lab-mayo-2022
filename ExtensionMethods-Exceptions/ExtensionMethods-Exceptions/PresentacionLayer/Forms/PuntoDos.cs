@@ -44,7 +44,7 @@ namespace PresentacionLayer.Forms
 
         private void PuntoDos_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this._main.Show();
+            this._main.Visible = true;
         }
     }
 }

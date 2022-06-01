@@ -13,9 +13,13 @@ namespace PresentacionLayer.Forms
 {
     public partial class PuntoCuatro : Form
     {
-        public PuntoCuatro()
+        private Main _main;
+
+        public PuntoCuatro(Main main)
         {
             InitializeComponent();
+
+            this._main = main;
         }
 
         private void btnDispararExcepcion_Click(object sender, EventArgs e)
@@ -26,8 +30,13 @@ namespace PresentacionLayer.Forms
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, ex.GetType().Name);
             }
+        }
+
+        private void PuntoCuatro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this._main.Visible = true;
         }
     }
 }

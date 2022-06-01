@@ -51,6 +51,7 @@ namespace PresentacionLayer.Forms
             this.Name = "PuntoCuatro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PuntoCuatro";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PuntoCuatro_FormClosed);
             this.ResumeLayout(false);
 
         }

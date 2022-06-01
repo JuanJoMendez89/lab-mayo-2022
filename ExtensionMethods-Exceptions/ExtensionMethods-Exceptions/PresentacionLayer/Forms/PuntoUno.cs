@@ -48,7 +48,7 @@ namespace PresentacionLayer.Forms
 
         private void PuntoUno_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this._main.Show();
+            this._main.Visible = true;
         }
     }
 }

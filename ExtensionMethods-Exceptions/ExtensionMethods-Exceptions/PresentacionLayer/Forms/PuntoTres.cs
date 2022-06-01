@@ -36,7 +36,7 @@ namespace PresentacionLayer.Forms
 
         private void PuntoTres_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this._main.Show();
+            this._main.Visible = true;
         }
     }
 }

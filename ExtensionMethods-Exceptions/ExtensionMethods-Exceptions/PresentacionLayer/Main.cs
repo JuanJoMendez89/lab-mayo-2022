@@ -47,7 +47,7 @@ namespace PresentacionLayer
 
         private void btnPuntoCuatro_Click(object sender, EventArgs e)
         {
-            PuntoCuatro form = new PuntoCuatro();
+            PuntoCuatro form = new PuntoCuatro(this);
 
             form.Show();
 
