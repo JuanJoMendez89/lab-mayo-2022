@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentacionLayer", "Presen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaLayer", "LogicaLayer\LogicaLayer.csproj", "{ED44B43F-7B33-4837-9F97-7E1B3E6D80CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaLayerTests", "LogicaLayerTests\LogicaLayerTests.csproj", "{28F883E4-0746-44EE-88AC-DEE25444C133}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ED44B43F-7B33-4837-9F97-7E1B3E6D80CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED44B43F-7B33-4837-9F97-7E1B3E6D80CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED44B43F-7B33-4837-9F97-7E1B3E6D80CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28F883E4-0746-44EE-88AC-DEE25444C133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F883E4-0746-44EE-88AC-DEE25444C133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F883E4-0746-44EE-88AC-DEE25444C133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F883E4-0746-44EE-88AC-DEE25444C133}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
