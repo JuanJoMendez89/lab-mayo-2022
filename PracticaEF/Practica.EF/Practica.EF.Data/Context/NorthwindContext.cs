@@ -18,6 +18,7 @@ namespace Practica.EF.Data.Context
             modelBuilder.Entity<Customers>()
                 .Property(e => e.CustomerID)
                 .IsFixedLength();
+
         }
     }
 }

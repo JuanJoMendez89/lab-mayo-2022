@@ -51,7 +51,7 @@ namespace Practica.EF.UI.Modals
             this.label10 = new System.Windows.Forms.Label();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -69,6 +69,7 @@ namespace Practica.EF.UI.Modals
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 1;
+            this.txtID.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtID_KeyUp);
             // 
             // txtCompanyName
             // 
@@ -76,6 +77,7 @@ namespace Practica.EF.UI.Modals
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(100, 20);
             this.txtCompanyName.TabIndex = 3;
+            this.txtCompanyName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCompanyName_KeyUp);
             // 
             // label2
             // 
@@ -230,21 +232,22 @@ namespace Practica.EF.UI.Modals
             this.label11.TabIndex = 20;
             this.label11.Text = "Fax";
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(104, 363);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(104, 363);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 22;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // CustomersEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(283, 408);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtFax);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPhone);
@@ -270,7 +273,7 @@ namespace Practica.EF.UI.Modals
             this.Name = "CustomersEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CustomersEditor_FormClosed);
+            this.Load += new System.EventHandler(this.CustomersEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +303,6 @@ namespace Practica.EF.UI.Modals
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
     }
 }

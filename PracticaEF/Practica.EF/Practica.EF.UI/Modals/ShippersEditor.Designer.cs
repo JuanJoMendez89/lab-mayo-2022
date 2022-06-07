@@ -33,7 +33,7 @@ namespace Practica.EF.UI.Modals
             this.label1 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCompanyName
@@ -42,6 +42,7 @@ namespace Practica.EF.UI.Modals
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(100, 20);
             this.txtCompanyName.TabIndex = 3;
+            this.txtCompanyName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCompanyName_KeyUp);
             // 
             // label1
             // 
@@ -68,21 +69,22 @@ namespace Practica.EF.UI.Modals
             this.label2.TabIndex = 4;
             this.label2.Text = "Phone";
             // 
-            // btnAceptar
+            // btnSave
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(59, 190);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 6;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(59, 190);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ShippersEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(192, 239);
-            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCompanyName);
@@ -90,7 +92,7 @@ namespace Practica.EF.UI.Modals
             this.Name = "ShippersEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shipper";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ShippersEditor_FormClosed);
+            this.Load += new System.EventHandler(this.ShippersEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,6 +104,6 @@ namespace Practica.EF.UI.Modals
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnSave;
     }
 }

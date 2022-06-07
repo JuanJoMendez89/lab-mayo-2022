@@ -1,10 +1,12 @@
 namespace Practica.EF.Entities.Entities
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Shippers : BaseEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ShipperID { get; set; }
 
         [Required]

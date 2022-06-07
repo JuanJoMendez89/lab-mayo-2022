@@ -31,6 +31,18 @@ namespace Practica.EF.UI.Forms
         {
             this.SuspendLayout();
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // ShippersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -39,6 +51,7 @@ namespace Practica.EF.UI.Forms
             this.Name = "ShippersForm";
             this.Text = "Shippers";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ShippersForm_FormClosed);
+            this.Load += new System.EventHandler(this.ShippersForm_Load);
             this.ResumeLayout(false);
 
         }

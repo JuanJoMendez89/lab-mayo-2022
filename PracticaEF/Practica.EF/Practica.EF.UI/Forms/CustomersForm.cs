@@ -16,14 +16,11 @@ namespace Practica.EF.UI.Forms
 {
     public partial class CustomersForm : BaseForm
     {
-        private CustomersLogic _customersLogic;
-
         public CustomersForm(Main main)
         {
             InitializeComponent();
 
             _main = main;
-            _customersLogic = new CustomersLogic();
         }
 
         private void CustomersForm_Load(object sender, EventArgs e)
@@ -33,14 +30,27 @@ namespace Practica.EF.UI.Forms
 
         protected void LoadGrid()
         {
-            List<Customers> customers = _customersLogic.GetAll();
+            try
+            {
+                List<Customers> customers = new CustomersLogic().GetAll();
 
-            dgvGrid.DataSource = customers;
+                dgvGrid.DataSource = null;
+                dgvGrid.Rows.Clear();
+
+                dgvGrid.DataSource = customers;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CustomersEditor editor = new CustomersEditor(this);
+            CustomersEditor editor = new CustomersEditor();
+            editor.FormClosed += Editor_FormClosed;
 
             editor.Show();
 
@@ -49,8 +59,23 @@ namespace Practica.EF.UI.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Customers customer = new Customers();
-            CustomersEditor editor = new CustomersEditor(this, customer, true);
+            DataGridViewRow row = dgvGrid.SelectedRows[0];
+
+            Customers customer = new Customers {
+                CustomerID = row.Cells["CustomerID"].Value.ToString(),
+                CompanyName = row.Cells["CompanyName"].Value.ToString(),
+                ContactName = (row.Cells["ContactName"].Value ?? String.Empty).ToString(),
+                ContactTitle = (row.Cells["ContactTitle"].Value ?? String.Empty).ToString(),
+                Address = (row.Cells["Address"].Value ?? String.Empty).ToString(),
+                City = (row.Cells["City"].Value ?? String.Empty).ToString(),
+                Region = (row.Cells["Region"].Value ?? String.Empty).ToString(),
+                Country = (row.Cells["Country"].Value ?? String.Empty).ToString(),
+                Phone = (row.Cells["Phone"].Value ?? String.Empty).ToString(),
+                Fax = (row.Cells["Fax"].Value ?? String.Empty).ToString(),
+            };
+
+            CustomersEditor editor = new CustomersEditor(customer, true);
+            editor.FormClosed += Editor_FormClosed;
 
             editor.Show();
 
@@ -59,12 +84,35 @@ namespace Practica.EF.UI.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            LoadGrid();
+            try
+            {
+                DataGridViewRow row = dgvGrid.SelectedRows[0];
+                string id = row.Cells["CustomerID"].Value.ToString();
+
+                new CustomersLogic().Delete(id);
+
+                LoadGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+
         }
 
         private void CustomersForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _main.Visible = true;
+        }
+
+        void Editor_FormClosed(object sender, FormClosedEventArgs e) {
+            bool isChangesSaved = Convert.ToBoolean(sender.GetType().GetProperty("IsChangesSaved").GetValue(sender));
+
+            if (isChangesSaved) {
+                LoadGrid();
+            }
+
+            this.Enabled = true;
         }
 
     }

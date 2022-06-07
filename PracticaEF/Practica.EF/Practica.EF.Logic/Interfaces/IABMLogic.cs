@@ -12,7 +12,7 @@ namespace Practica.EF.Logic.Interfaces
         List<T> GetAll();
         void Add(T entity);
         void Update(T entity);
-        void Delete(int id);
+        void Delete(string id);
 
     }
 }

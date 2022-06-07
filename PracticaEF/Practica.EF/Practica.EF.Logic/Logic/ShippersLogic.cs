@@ -12,33 +12,69 @@ namespace Practica.EF.Logic.Logic
     {
         public void Add(Shippers entity)
         {
-            _context.Shippers.Add(entity);
+            try
+            {
+                _context.Shippers.Add(entity);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.GetBaseException();
+            }
+
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
-            Shippers shipper = _context.Shippers.Find(id);
+            try
+            {
+                Shippers shipper = _context.Shippers.Find(Convert.ToInt32(id));
 
-            _context.Shippers.Remove(shipper);
+                _context.Shippers.Remove(shipper);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.GetBaseException();
+            }
+
         }
 
         public List<Shippers> GetAll()
         {
-            return _context.Shippers.ToList();
+            try
+            {
+                return _context.Shippers.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.GetBaseException();
+            }
+
         }
 
         public void Update(Shippers entity)
         {
-            Shippers shipper = _context.Shippers.Find(entity.ShipperID);
+            try
+            {
+                Shippers shipper = _context.Shippers.Find(entity.ShipperID);
 
-            shipper.CompanyName = entity.CompanyName;
-            shipper.Phone = entity.Phone;
+                shipper.CompanyName = entity.CompanyName;
+                shipper.Phone = entity.Phone;
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.GetBaseException();
+            }
+
         }
     }
 }
