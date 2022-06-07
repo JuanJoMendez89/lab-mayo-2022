@@ -55,7 +55,7 @@ namespace Practica.EF.UI.Modals
             {
                 Shippers shipper = new Shippers
                 {
-                    ShipperID = _shipper.ShipperID,
+                    ShipperID = (!_isEdit) ? 0 : _shipper.ShipperID,
                     CompanyName = txtCompanyName.Text,
                     Phone = txtPhone.Text
                 };

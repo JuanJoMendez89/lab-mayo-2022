@@ -41,7 +41,7 @@ namespace Practica.EF.UI.Modals
             this.txtCompanyName.Location = new System.Drawing.Point(48, 47);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(100, 20);
-            this.txtCompanyName.TabIndex = 3;
+            this.txtCompanyName.TabIndex = 1;
             this.txtCompanyName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCompanyName_KeyUp);
             // 
             // label1
@@ -58,7 +58,7 @@ namespace Practica.EF.UI.Modals
             this.txtPhone.Location = new System.Drawing.Point(48, 107);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
-            this.txtPhone.TabIndex = 5;
+            this.txtPhone.TabIndex = 2;
             // 
             // label2
             // 
@@ -74,7 +74,7 @@ namespace Practica.EF.UI.Modals
             this.btnSave.Location = new System.Drawing.Point(59, 190);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 6;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

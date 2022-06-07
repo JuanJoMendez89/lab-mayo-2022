@@ -65,6 +65,7 @@ namespace Practica.EF.UI.Modals
             // 
             // txtID
             // 
+            this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtID.Location = new System.Drawing.Point(24, 37);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
@@ -76,7 +77,7 @@ namespace Practica.EF.UI.Modals
             this.txtCompanyName.Location = new System.Drawing.Point(24, 90);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(100, 20);
-            this.txtCompanyName.TabIndex = 3;
+            this.txtCompanyName.TabIndex = 2;
             this.txtCompanyName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCompanyName_KeyUp);
             // 
             // label2
@@ -93,7 +94,7 @@ namespace Practica.EF.UI.Modals
             this.txtContactName.Location = new System.Drawing.Point(24, 146);
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(100, 20);
-            this.txtContactName.TabIndex = 5;
+            this.txtContactName.TabIndex = 3;
             // 
             // label3
             // 
@@ -109,7 +110,7 @@ namespace Practica.EF.UI.Modals
             this.txtContactTitle.Location = new System.Drawing.Point(24, 199);
             this.txtContactTitle.Name = "txtContactTitle";
             this.txtContactTitle.Size = new System.Drawing.Size(100, 20);
-            this.txtContactTitle.TabIndex = 7;
+            this.txtContactTitle.TabIndex = 4;
             // 
             // label4
             // 
@@ -125,7 +126,7 @@ namespace Practica.EF.UI.Modals
             this.txtAddress.Location = new System.Drawing.Point(24, 254);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(100, 20);
-            this.txtAddress.TabIndex = 9;
+            this.txtAddress.TabIndex = 5;
             // 
             // label5
             // 
@@ -141,7 +142,7 @@ namespace Practica.EF.UI.Modals
             this.txtCity.Location = new System.Drawing.Point(24, 306);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(100, 20);
-            this.txtCity.TabIndex = 11;
+            this.txtCity.TabIndex = 6;
             // 
             // label6
             // 
@@ -157,7 +158,7 @@ namespace Practica.EF.UI.Modals
             this.txtRegion.Location = new System.Drawing.Point(161, 37);
             this.txtRegion.Name = "txtRegion";
             this.txtRegion.Size = new System.Drawing.Size(100, 20);
-            this.txtRegion.TabIndex = 13;
+            this.txtRegion.TabIndex = 7;
             // 
             // label7
             // 
@@ -173,7 +174,7 @@ namespace Practica.EF.UI.Modals
             this.txtPostalCode.Location = new System.Drawing.Point(161, 90);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(100, 20);
-            this.txtPostalCode.TabIndex = 15;
+            this.txtPostalCode.TabIndex = 8;
             // 
             // label8
             // 
@@ -189,7 +190,7 @@ namespace Practica.EF.UI.Modals
             this.txtCountry.Location = new System.Drawing.Point(161, 146);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(100, 20);
-            this.txtCountry.TabIndex = 17;
+            this.txtCountry.TabIndex = 9;
             // 
             // label9
             // 
@@ -205,7 +206,7 @@ namespace Practica.EF.UI.Modals
             this.txtPhone.Location = new System.Drawing.Point(161, 199);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
-            this.txtPhone.TabIndex = 19;
+            this.txtPhone.TabIndex = 10;
             // 
             // label10
             // 
@@ -221,7 +222,7 @@ namespace Practica.EF.UI.Modals
             this.txtFax.Location = new System.Drawing.Point(161, 254);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(100, 20);
-            this.txtFax.TabIndex = 21;
+            this.txtFax.TabIndex = 11;
             // 
             // label11
             // 
@@ -237,7 +238,7 @@ namespace Practica.EF.UI.Modals
             this.btnSave.Location = new System.Drawing.Point(104, 363);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 22;
+            this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

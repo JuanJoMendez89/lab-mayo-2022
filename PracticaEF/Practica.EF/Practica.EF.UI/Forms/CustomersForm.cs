@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -70,6 +71,7 @@ namespace Practica.EF.UI.Forms
                 City = (row.Cells["City"].Value ?? String.Empty).ToString(),
                 Region = (row.Cells["Region"].Value ?? String.Empty).ToString(),
                 Country = (row.Cells["Country"].Value ?? String.Empty).ToString(),
+                PostalCode = (row.Cells["PostalCode"].Value ?? String.Empty).ToString(),
                 Phone = (row.Cells["Phone"].Value ?? String.Empty).ToString(),
                 Fax = (row.Cells["Fax"].Value ?? String.Empty).ToString(),
             };
@@ -92,6 +94,9 @@ namespace Practica.EF.UI.Forms
                 new CustomersLogic().Delete(id);
 
                 LoadGrid();
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("Can't delete. There's orders binded to this customer.", "Error");
             }
             catch (Exception ex)
             {

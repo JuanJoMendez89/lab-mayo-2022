@@ -73,7 +73,8 @@ namespace Practica.EF.UI.Modals
                     Address = txtAddress.Text,
                     City = txtCity.Text,
                     Region = txtRegion.Text,
-                    Country = txtPostalCode.Text,
+                    Country = txtCountry.Text,
+                    PostalCode = txtPostalCode.Text,
                     Phone = txtPhone.Text,
                     Fax = txtFax.Text,
                 };
@@ -101,6 +102,9 @@ namespace Practica.EF.UI.Modals
                 _isChangesSaved = true;
 
                 this.Close();
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("Duplicated Customer ID", "Error");
             }
             catch (Exception ex)
             {

@@ -69,15 +69,17 @@ namespace Practica.EF.UI.Forms
             this.dgvGrid.AllowUserToDeleteRows = false;
             this.dgvGrid.AllowUserToResizeColumns = false;
             this.dgvGrid.AllowUserToResizeRows = false;
-            this.dgvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvGrid.Location = new System.Drawing.Point(12, 53);
             this.dgvGrid.MultiSelect = false;
             this.dgvGrid.Name = "dgvGrid";
             this.dgvGrid.ReadOnly = true;
+            this.dgvGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGrid.Size = new System.Drawing.Size(776, 323);
             this.dgvGrid.TabIndex = 3;
+            this.dgvGrid.TabStop = false;
             // 
             // BaseForm
             // 

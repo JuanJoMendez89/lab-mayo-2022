@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -89,6 +90,10 @@ namespace Practica.EF.UI.Forms
                 new ShippersLogic().Delete(id);
 
                 LoadGrid();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Can't delete. There's orders binded to this shipper.", "Error");
             }
             catch (Exception ex)
             {
