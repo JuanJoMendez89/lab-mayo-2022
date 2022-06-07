@@ -16,11 +16,15 @@ namespace Practica.EF.UI.Forms
 {
     public partial class ShippersForm : BaseForm
     {
+        private ShippersLogic _shippersLogic;
+
         public ShippersForm(Main main)
         {
             InitializeComponent();
 
             _main = main;
+
+            _shippersLogic = new ShippersLogic();
         }
 
         private void ShippersForm_Load(object sender, EventArgs e)
@@ -32,7 +36,7 @@ namespace Practica.EF.UI.Forms
         {
             try
             {
-                List<Shippers> shippers = new ShippersLogic().GetAll();
+                List<Shippers> shippers = _shippersLogic.GetAll();
 
                 dgvGrid.DataSource = null;
                 dgvGrid.Rows.Clear();
@@ -53,7 +57,7 @@ namespace Practica.EF.UI.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ShippersEditor editor = new ShippersEditor();
+            ShippersEditor editor = new ShippersEditor(_shippersLogic);
             editor.FormClosed += Editor_FormClosed;
 
             editor.Show();
@@ -72,7 +76,7 @@ namespace Practica.EF.UI.Forms
                 Phone = (row.Cells["Phone"].Value ?? String.Empty).ToString(),
             };
 
-            ShippersEditor editor = new ShippersEditor(shipper, true);
+            ShippersEditor editor = new ShippersEditor(shipper, _shippersLogic, true);
             editor.FormClosed += Editor_FormClosed;
 
             editor.Show();
@@ -87,13 +91,13 @@ namespace Practica.EF.UI.Forms
                 DataGridViewRow row = dgvGrid.SelectedRows[0];
                 string id = row.Cells["ShipperID"].Value.ToString();
 
-                new ShippersLogic().Delete(id);
+                _shippersLogic.Delete(id);
 
                 LoadGrid();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                MessageBox.Show("Can't delete. There's orders binded to this shipper.", "Error");
+                MessageBox.Show("Can't delete. There're orders bound this shipper.", "Error");
             }
             catch (Exception ex)
             {

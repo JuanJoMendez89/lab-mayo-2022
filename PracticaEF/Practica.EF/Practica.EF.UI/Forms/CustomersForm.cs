@@ -17,11 +17,14 @@ namespace Practica.EF.UI.Forms
 {
     public partial class CustomersForm : BaseForm
     {
+        private CustomersLogic _customerLogic;
         public CustomersForm(Main main)
         {
             InitializeComponent();
 
             _main = main;
+
+            _customerLogic = new CustomersLogic();
         }
 
         private void CustomersForm_Load(object sender, EventArgs e)
@@ -33,7 +36,7 @@ namespace Practica.EF.UI.Forms
         {
             try
             {
-                List<Customers> customers = new CustomersLogic().GetAll();
+                List<Customers> customers = _customerLogic.GetAll();
 
                 dgvGrid.DataSource = null;
                 dgvGrid.Rows.Clear();
@@ -50,7 +53,7 @@ namespace Practica.EF.UI.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CustomersEditor editor = new CustomersEditor();
+            CustomersEditor editor = new CustomersEditor(_customerLogic);
             editor.FormClosed += Editor_FormClosed;
 
             editor.Show();
@@ -76,7 +79,7 @@ namespace Practica.EF.UI.Forms
                 Fax = (row.Cells["Fax"].Value ?? String.Empty).ToString(),
             };
 
-            CustomersEditor editor = new CustomersEditor(customer, true);
+            CustomersEditor editor = new CustomersEditor(customer, _customerLogic, true);
             editor.FormClosed += Editor_FormClosed;
 
             editor.Show();
@@ -91,12 +94,12 @@ namespace Practica.EF.UI.Forms
                 DataGridViewRow row = dgvGrid.SelectedRows[0];
                 string id = row.Cells["CustomerID"].Value.ToString();
 
-                new CustomersLogic().Delete(id);
+                _customerLogic.Delete(id);
 
                 LoadGrid();
             }
-            catch (SqlException ex) {
-                MessageBox.Show("Can't delete. There's orders binded to this customer.", "Error");
+            catch (SqlException) {
+                MessageBox.Show("Can't delete. There're orders bound to this customer.", "Error");
             }
             catch (Exception ex)
             {

@@ -2,6 +2,7 @@
 using Practica.EF.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Practica.EF.Logic.Logic
             }
             catch (Exception ex)
             {
-
+                _context.Entry(entity).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
@@ -28,17 +29,17 @@ namespace Practica.EF.Logic.Logic
 
         public void Delete(string id)
         {
+            Shippers shipper = _context.Shippers.Find(Convert.ToInt32(id));
+
             try
             {
-                Shippers shipper = _context.Shippers.Find(Convert.ToInt32(id));
-
                 _context.Shippers.Remove(shipper);
 
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-
+                _context.Entry(shipper).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
@@ -60,10 +61,10 @@ namespace Practica.EF.Logic.Logic
 
         public void Update(Shippers entity)
         {
+            Shippers shipper = _context.Shippers.Find(entity.ShipperID);
+
             try
             {
-                Shippers shipper = _context.Shippers.Find(entity.ShipperID);
-
                 shipper.CompanyName = entity.CompanyName;
                 shipper.Phone = entity.Phone;
 
@@ -71,7 +72,7 @@ namespace Practica.EF.Logic.Logic
             }
             catch (Exception ex)
             {
-
+                _context.Entry(shipper).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 

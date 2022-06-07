@@ -23,14 +23,14 @@ namespace Practica.EF.UI.Modals
 
         public bool IsChangesSaved => this._isChangesSaved;
 
-        public CustomersEditor()
+        public CustomersEditor(CustomersLogic customerLogic)
         {
             InitializeComponent();
 
-            _customerLogic = new CustomersLogic();
+            _customerLogic = customerLogic;
         }
 
-        public CustomersEditor(Customers customer, bool isEdit)
+        public CustomersEditor(Customers customer, CustomersLogic customerLogic, bool isEdit)
         {
             InitializeComponent();
 
@@ -38,7 +38,7 @@ namespace Practica.EF.UI.Modals
 
             _isEdit = isEdit;
 
-            _customerLogic = new CustomersLogic();
+            _customerLogic = customerLogic;
         }
 
         private void CustomersEditor_Load(object sender, EventArgs e)
@@ -64,6 +64,19 @@ namespace Practica.EF.UI.Modals
         {
             try
             {
+
+                if (String.IsNullOrEmpty(txtID.Text) && !_isEdit)
+                {
+                    txtID.BackColor = Color.Red;
+                    return;
+                }
+
+                if (String.IsNullOrEmpty(txtCompanyName.Text))
+                {
+                    txtCompanyName.BackColor = Color.Red;
+                    return;
+                }
+
                 Customers customer = new Customers
                 {
                     CustomerID = txtID.Text,
@@ -79,18 +92,6 @@ namespace Practica.EF.UI.Modals
                     Fax = txtFax.Text,
                 };
 
-                if (String.IsNullOrEmpty(txtID.Text) && !_isEdit)
-                {
-                    txtID.BackColor = Color.Red;
-                    return;
-                }
-
-                if (String.IsNullOrEmpty(txtCompanyName.Text))
-                {
-                    txtCompanyName.BackColor = Color.Red;
-                    return;
-                }
-
                 if (_isEdit)
                 {
                     _customerLogic.Update(customer);
@@ -103,7 +104,7 @@ namespace Practica.EF.UI.Modals
 
                 this.Close();
             }
-            catch (SqlException ex) {
+            catch (SqlException) {
                 MessageBox.Show("Duplicated Customer ID", "Error");
             }
             catch (Exception ex)

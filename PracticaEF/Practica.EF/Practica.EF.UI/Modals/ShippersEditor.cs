@@ -23,18 +23,18 @@ namespace Practica.EF.UI.Modals
 
         public bool IsChangesSaved => this._isChangesSaved;
 
-        public ShippersEditor()
+        public ShippersEditor(ShippersLogic shippersLogic)
         {
             InitializeComponent();
 
-            _shippersLogic = new ShippersLogic();
+            _shippersLogic = shippersLogic;
         }
 
-        public ShippersEditor(Shippers shipper, bool isEdit)
+        public ShippersEditor(Shippers shipper, ShippersLogic shippersLogic, bool isEdit)
         {
             InitializeComponent();
 
-            _shippersLogic = new ShippersLogic();
+            _shippersLogic = shippersLogic;
 
             _shipper = shipper;
 
@@ -53,18 +53,19 @@ namespace Practica.EF.UI.Modals
         {
             try
             {
-                Shippers shipper = new Shippers
-                {
-                    ShipperID = (!_isEdit) ? 0 : _shipper.ShipperID,
-                    CompanyName = txtCompanyName.Text,
-                    Phone = txtPhone.Text
-                };
 
                 if (String.IsNullOrEmpty(txtCompanyName.Text))
                 {
                     txtCompanyName.BackColor = Color.Red;
                     return;
                 }
+
+                Shippers shipper = new Shippers
+                {
+                    ShipperID = (!_isEdit) ? 0 : _shipper.ShipperID,
+                    CompanyName = txtCompanyName.Text,
+                    Phone = txtPhone.Text
+                };
 
                 if (_isEdit)
                 {

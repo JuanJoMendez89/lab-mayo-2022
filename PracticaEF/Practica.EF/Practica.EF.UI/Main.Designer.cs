@@ -35,7 +35,7 @@ namespace Practica.EF.UI
             // 
             // btnCustomers
             // 
-            this.btnCustomers.Location = new System.Drawing.Point(96, 76);
+            this.btnCustomers.Location = new System.Drawing.Point(149, 76);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(75, 23);
             this.btnCustomers.TabIndex = 0;
@@ -45,7 +45,7 @@ namespace Practica.EF.UI
             // 
             // btnShippers
             // 
-            this.btnShippers.Location = new System.Drawing.Point(96, 159);
+            this.btnShippers.Location = new System.Drawing.Point(149, 159);
             this.btnShippers.Name = "btnShippers";
             this.btnShippers.Size = new System.Drawing.Size(75, 23);
             this.btnShippers.TabIndex = 1;
@@ -57,12 +57,12 @@ namespace Practica.EF.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 258);
+            this.ClientSize = new System.Drawing.Size(373, 258);
             this.Controls.Add(this.btnShippers);
             this.Controls.Add(this.btnCustomers);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Practica Entity Framework";
+            this.Text = "Entity Framework Practice";
             this.ResumeLayout(false);
 
         }

@@ -2,6 +2,7 @@
 using Practica.EF.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Practica.EF.Logic.Logic
             }
             catch (Exception ex)
             {
+                _context.Entry(entity).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
@@ -28,16 +30,17 @@ namespace Practica.EF.Logic.Logic
 
         public void Delete(string id)
         {
+            Customers customer = _context.Customers.Find(id);
+
             try
             {
-                Customers customer = _context.Customers.Find(id);
-
                 _context.Customers.Remove(customer);
 
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
+                _context.Entry(customer).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
@@ -47,8 +50,6 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-
-
                 return _context.Customers.ToList();
             }
             catch (Exception ex)
@@ -60,25 +61,26 @@ namespace Practica.EF.Logic.Logic
 
         public void Update(Customers entity)
         {
+            Customers customer = _context.Customers.Find(entity.CustomerID);
+
             try
             {
-                Customers customers = _context.Customers.Find(entity.CustomerID);
-
-                customers.CompanyName = entity.CompanyName;
-                customers.ContactName = entity.ContactName;
-                customers.ContactTitle = entity.ContactTitle;
-                customers.Address = entity.Address;
-                customers.City = entity.City;
-                customers.Region = entity.Region;
-                customers.PostalCode = entity.PostalCode;
-                customers.Country = entity.Country;
-                customers.Phone = entity.Phone;
-                customers.Fax = entity.Fax;
+                customer.CompanyName = entity.CompanyName;
+                customer.ContactName = entity.ContactName;
+                customer.ContactTitle = entity.ContactTitle;
+                customer.Address = entity.Address;
+                customer.City = entity.City;
+                customer.Region = entity.Region;
+                customer.PostalCode = entity.PostalCode;
+                customer.Country = entity.Country;
+                customer.Phone = entity.Phone;
+                customer.Fax = entity.Fax;
 
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
+                _context.Entry(customer).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
