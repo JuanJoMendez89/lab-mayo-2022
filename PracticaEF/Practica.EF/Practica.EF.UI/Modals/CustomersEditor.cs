@@ -1,4 +1,5 @@
-﻿using Practica.EF.Entities.Entities;
+﻿using Practica.EF.Common.Exceptions;
+using Practica.EF.Entities.Entities;
 using Practica.EF.Logic.Logic;
 using System;
 using System.Data.SqlClient;
@@ -97,7 +98,7 @@ namespace Practica.EF.UI.Modals
 
                 this.Close();
             }
-            catch (SqlException) {
+            catch (DuplicateKeyException) {
                 MessageBox.Show("Duplicated Customer ID", "Error");
             }
             catch (Exception ex)

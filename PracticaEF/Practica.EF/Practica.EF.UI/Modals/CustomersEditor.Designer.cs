@@ -67,6 +67,7 @@ namespace Practica.EF.UI.Modals
             // 
             this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtID.Location = new System.Drawing.Point(24, 37);
+            this.txtID.MaxLength = 5;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 1;

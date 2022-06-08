@@ -1,8 +1,10 @@
-﻿using Practica.EF.Entities.Entities;
+﻿using Practica.EF.Common.Exceptions;
+using Practica.EF.Entities.Entities;
 using Practica.EF.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Practica.EF.Logic.Logic
@@ -13,13 +15,15 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
+                if (_context.Customers.Any(c => c.CustomerID == entity.CustomerID))
+                    throw new DuplicateKeyException("Duplicate ID");
+
                 _context.Customers.Add(entity);
 
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                _context.Entry(entity).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
