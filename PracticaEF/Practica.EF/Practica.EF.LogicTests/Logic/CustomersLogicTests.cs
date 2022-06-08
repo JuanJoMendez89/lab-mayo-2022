@@ -31,6 +31,8 @@ namespace Practica.EF.Logic.Logic.Tests
             logic.Add(customer);
 
             Assert.AreEqual(customer, logic.GetByID(customer.CustomerID));
+
+            logic.Delete(customer.CustomerID);
         }
     }
 }

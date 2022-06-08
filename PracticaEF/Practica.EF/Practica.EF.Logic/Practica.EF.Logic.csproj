@@ -63,10 +63,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Practica.EF.Common\Practica.EF.Common.csproj">
-      <Project>{ED97664C-EFD3-4F40-A8F6-1778090048DE}</Project>
-      <Name>Practica.EF.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Practica.EF.Data\Practica.EF.Data.csproj">
       <Project>{DAAB618C-CCAE-4C4F-AD32-4B75FC6DFD26}</Project>
       <Name>Practica.EF.Data</Name>

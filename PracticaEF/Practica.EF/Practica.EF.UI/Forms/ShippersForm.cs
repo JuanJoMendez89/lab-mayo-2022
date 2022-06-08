@@ -108,6 +108,7 @@ namespace Practica.EF.UI.Forms
                 LoadGrid();
             }
 
+            this.Activate();
             this.Enabled = true;
         }
     }

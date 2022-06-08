@@ -19,6 +19,7 @@ namespace Practica.EF.Logic.Logic
             }
             catch (Exception ex)
             {
+                _context.Entry(entity).State = EntityState.Detached;
                 throw ex.GetBaseException();
             }
 
