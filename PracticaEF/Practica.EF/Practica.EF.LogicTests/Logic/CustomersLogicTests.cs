@@ -1,11 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Practica.EF.Entities.Entities;
-using Practica.EF.Logic.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Practica.EF.Logic.Logic.Tests
 {
@@ -13,7 +7,7 @@ namespace Practica.EF.Logic.Logic.Tests
     public class CustomersLogicTests
     {
         // Este test solo funciona si el registro no existe en la bd
-        // Ya que la columna CustomerID es Unique Key.
+        // Ya que la primary key es unica.
         [TestMethod()]
         public void AddTest()
         {
