@@ -58,13 +58,13 @@ namespace Practica.EF.UI.Modals
             try
             {
 
-                if (String.IsNullOrEmpty(txtID.Text) && !_isEdit)
+                if ((String.IsNullOrEmpty(txtID.Text) || String.IsNullOrWhiteSpace(txtID.Text)) && !_isEdit)
                 {
                     txtID.BackColor = Color.Red;
                     return;
                 }
 
-                if (String.IsNullOrEmpty(txtCompanyName.Text))
+                if (String.IsNullOrEmpty(txtCompanyName.Text) || String.IsNullOrWhiteSpace(txtCompanyName.Text))
                 {
                     txtCompanyName.BackColor = Color.Red;
                     return;
@@ -72,17 +72,17 @@ namespace Practica.EF.UI.Modals
 
                 Customers customer = new Customers
                 {
-                    CustomerID = txtID.Text,
-                    CompanyName = txtCompanyName.Text,
-                    ContactName = txtContactName.Text,
-                    ContactTitle = txtContactTitle.Text,
-                    Address = txtAddress.Text,
-                    City = txtCity.Text,
-                    Region = txtRegion.Text,
-                    Country = txtCountry.Text,
-                    PostalCode = txtPostalCode.Text,
-                    Phone = txtPhone.Text,
-                    Fax = txtFax.Text,
+                    CustomerID = txtID.Text.Trim(),
+                    CompanyName = txtCompanyName.Text.Trim(),
+                    ContactName = txtContactName.Text.Trim(),
+                    ContactTitle = txtContactTitle.Text.Trim(),
+                    Address = txtAddress.Text.Trim(),
+                    City = txtCity.Text.Trim(),
+                    Region = txtRegion.Text.Trim(),
+                    Country = txtCountry.Text.Trim(),
+                    PostalCode = txtPostalCode.Text.Trim(),
+                    Phone = txtPhone.Text.Trim(),
+                    Fax = txtFax.Text.Trim(),
                 };
 
                 if (_isEdit)

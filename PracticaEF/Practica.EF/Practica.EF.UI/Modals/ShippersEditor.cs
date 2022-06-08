@@ -47,7 +47,7 @@ namespace Practica.EF.UI.Modals
             try
             {
 
-                if (String.IsNullOrEmpty(txtCompanyName.Text))
+                if (String.IsNullOrEmpty(txtCompanyName.Text) || String.IsNullOrWhiteSpace(txtCompanyName.Text))
                 {
                     txtCompanyName.BackColor = Color.Red;
                     return;
@@ -56,8 +56,8 @@ namespace Practica.EF.UI.Modals
                 Shippers shipper = new Shippers
                 {
                     ShipperID = (!_isEdit) ? 0 : _shipper.ShipperID,
-                    CompanyName = txtCompanyName.Text,
-                    Phone = txtPhone.Text
+                    CompanyName = txtCompanyName.Text.Trim(),
+                    Phone = txtPhone.Text.Trim()
                 };
 
                 if (_isEdit)
