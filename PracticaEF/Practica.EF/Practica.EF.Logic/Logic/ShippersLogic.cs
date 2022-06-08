@@ -59,6 +59,19 @@ namespace Practica.EF.Logic.Logic
 
         }
 
+        public Shippers GetByID(string id)
+        {
+            try
+            {
+                return _context.Shippers.Find(Convert.ToInt32(id));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.GetBaseException();
+            }
+        }
+
         public void Update(Shippers entity)
         {
             Shippers shipper = _context.Shippers.Find(entity.ShipperID);

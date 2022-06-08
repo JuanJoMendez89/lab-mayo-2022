@@ -59,6 +59,11 @@ namespace Practica.EF.Logic.Logic
 
         }
 
+        public Customers GetByID(string id)
+        {
+            return _context.Customers.Find(id);
+        }
+
         public void Update(Customers entity)
         {
             Customers customer = _context.Customers.Find(entity.CustomerID);
