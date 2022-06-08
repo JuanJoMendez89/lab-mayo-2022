@@ -8,7 +8,7 @@ namespace Practica.EF.Common.Exceptions
 {
     public class DuplicateKeyException : Exception
     {
-        public string Key { get; set; }
+        public readonly string Key;
         public DuplicateKeyException(string message, string key) : base(message)
         {
             Key = key;
