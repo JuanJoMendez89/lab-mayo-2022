@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Practica.EF.Logic.Logic
 {
-    public class CustomersLogic : BaseLogic, IABMLogic<Customers>
+    public class CustomersLogic : BaseLogic, ICRUDLogic<Customers, string>
     {
         public void Add(Customers entity)
         {

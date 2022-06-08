@@ -14,7 +14,7 @@ namespace Practica.EF.Logic.Logic.Tests
             int expected = 1;
             int actual = 0;
 
-            Shippers shippers = shippersLogic.GetByID(expected.ToString());
+            Shippers shippers = shippersLogic.GetByID(expected);
 
             actual = shippers.ShipperID;
 

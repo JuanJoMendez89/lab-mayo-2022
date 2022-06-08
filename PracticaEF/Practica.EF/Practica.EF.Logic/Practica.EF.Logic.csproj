@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IABMLogic.cs" />
+    <Compile Include="Interfaces\ICRUDLogic.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
     <Compile Include="Logic\CustomersLogic.cs" />
     <Compile Include="Logic\ShippersLogic.cs" />

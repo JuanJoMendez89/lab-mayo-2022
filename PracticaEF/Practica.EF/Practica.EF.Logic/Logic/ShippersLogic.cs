@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Practica.EF.Logic.Logic
 {
-    public class ShippersLogic : BaseLogic, IABMLogic<Shippers>
+    public class ShippersLogic : BaseLogic, ICRUDLogic<Shippers, int>
     {
         public void Add(Shippers entity)
         {
@@ -25,9 +25,9 @@ namespace Practica.EF.Logic.Logic
 
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
-            Shippers shipper = _context.Shippers.Find(Convert.ToInt32(id));
+            Shippers shipper = _context.Shippers.Find(id);
 
             try
             {
@@ -57,7 +57,7 @@ namespace Practica.EF.Logic.Logic
 
         }
 
-        public Shippers GetByID(string id)
+        public Shippers GetByID(int id)
         {
             try
             {

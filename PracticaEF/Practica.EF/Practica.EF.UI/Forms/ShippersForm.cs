@@ -83,7 +83,7 @@ namespace Practica.EF.UI.Forms
             try
             {
                 DataGridViewRow row = dgvGrid.SelectedRows[0];
-                string id = row.Cells["ShipperID"].Value.ToString();
+                int id = Convert.ToInt32(row.Cells["ShipperID"].Value);
 
                 _shippersLogic.Delete(id);
 
