@@ -1,7 +1,7 @@
-﻿using Practica.EF.Entities.Entities;
+﻿using Practica.EF.Common.Exceptions;
+using Practica.EF.Entities.Entities;
 using Practica.EF.Logic.Logic;
 using System;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -97,8 +97,9 @@ namespace Practica.EF.UI.Modals
 
                 this.Close();
             }
-            catch (SqlException) {
-                MessageBox.Show("Can't save. Duplicated Customer ID", "Error");
+            catch (DuplicateKeyException ex)
+            {
+                MessageBox.Show($"CustomerID \"{ex.Key}\" already exist.", "Error");
             }
             catch (Exception ex)
             {

@@ -136,6 +136,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Practica.EF.Common\Practica.EF.Common.csproj">
+      <Project>{ED97664C-EFD3-4F40-A8F6-1778090048DE}</Project>
+      <Name>Practica.EF.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
       <Project>{CB885959-315B-416A-A7AA-04AB3F86C79E}</Project>
       <Name>Practica.EF.Entities</Name>

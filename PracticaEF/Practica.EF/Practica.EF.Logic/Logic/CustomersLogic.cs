@@ -1,4 +1,5 @@
-﻿using Practica.EF.Entities.Entities;
+﻿using Practica.EF.Common.Exceptions;
+using Practica.EF.Entities.Entities;
 using Practica.EF.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,16 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
+                if (_context.Customers.Any(c => c.CustomerID == entity.CustomerID)) {
+                    throw new DuplicateKeyException("Can't insert duplicate key.", entity.CustomerID);
+                }
+
                 _context.Customers.Add(entity);
 
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                _context.Entry(entity).State = EntityState.Detached;
                 throw ex.GetBaseException();
             }
 
