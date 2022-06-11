@@ -75,6 +75,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Practica.Linq.Common\Practica.Linq.Common.csproj">
+      <Project>{D5FF95E9-C288-4329-ACDB-8C915712B6A0}</Project>
+      <Name>Practica.Linq.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Practica.Linq.Entities\Practica.Linq.Entities.csproj">
       <Project>{fd1ec02b-a511-4d42-b6e0-61e964112921}</Project>
       <Name>Practica.Linq.Entities</Name>

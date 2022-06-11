@@ -1,4 +1,5 @@
-﻿using Practica.Linq.Entities.Entities;
+﻿using Practica.Linq.Data.Data;
+using Practica.Linq.Entities.Entities;
 using Practica.Linq.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,36 @@ namespace Practica.Linq.Logic.Logic
 {
     public class ShippersLogic : IABMLogic<Shippers, int>
     {
+        private readonly ShippersData _shippersData;
+
+        public ShippersLogic()
+        {
+            _shippersData = new ShippersData();
+        }
+
         public void Add(Shippers entity)
         {
-            throw new NotImplementedException();
+            _shippersData.Add(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _shippersData.Delete(id);
         }
 
         public List<Shippers> GetAll()
         {
-            throw new NotImplementedException();
+            return _shippersData.GetAll();
         }
 
         public Shippers GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _shippersData.GetByID(id);
         }
 
         public void Update(Shippers entity)
         {
-            throw new NotImplementedException();
+            _shippersData.Update(entity);
         }
     }
 }

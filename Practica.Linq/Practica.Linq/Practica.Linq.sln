@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.Linq.Data", "Pract
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.Linq.Entities", "Practica.Linq.Entities\Practica.Linq.Entities.csproj", "{FD1EC02B-A511-4D42-B6E0-61E964112921}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.Linq.Common", "Practica.Linq.Common\Practica.Linq.Common.csproj", "{D5FF95E9-C288-4329-ACDB-8C915712B6A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FD1EC02B-A511-4D42-B6E0-61E964112921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD1EC02B-A511-4D42-B6E0-61E964112921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD1EC02B-A511-4D42-B6E0-61E964112921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FF95E9-C288-4329-ACDB-8C915712B6A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FF95E9-C288-4329-ACDB-8C915712B6A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FF95E9-C288-4329-ACDB-8C915712B6A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FF95E9-C288-4329-ACDB-8C915712B6A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

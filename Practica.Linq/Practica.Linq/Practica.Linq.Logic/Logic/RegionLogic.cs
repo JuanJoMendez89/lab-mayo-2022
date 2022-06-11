@@ -1,4 +1,5 @@
-﻿using Practica.Linq.Entities.Entities;
+﻿using Practica.Linq.Data.Data;
+using Practica.Linq.Entities.Entities;
 using Practica.Linq.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,36 @@ namespace Practica.Linq.Logic.Logic
 {
     public class RegionLogic : IABMLogic<Region, int>
     {
+        private readonly RegionData _regionData;
+
+        public RegionLogic()
+        {
+            _regionData = new RegionData();
+        }
+
         public void Add(Region entity)
         {
-            throw new NotImplementedException();
+            _regionData.Add(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _regionData.Delete(id);
         }
 
         public List<Region> GetAll()
         {
-            throw new NotImplementedException();
+            return _regionData.GetAll();
         }
 
         public Region GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _regionData.GetByID(id);
         }
 
         public void Update(Region entity)
         {
-            throw new NotImplementedException();
+            _regionData.Update(entity);
         }
     }
 }

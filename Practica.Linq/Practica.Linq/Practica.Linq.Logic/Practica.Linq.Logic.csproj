@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -70,6 +73,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Practica.Linq.Data\Practica.Linq.Data.csproj">
+      <Project>{34402ca8-434d-4e15-bbc4-f08d5e8f2117}</Project>
+      <Name>Practica.Linq.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Practica.Linq.Entities\Practica.Linq.Entities.csproj">
       <Project>{FD1EC02B-A511-4D42-B6E0-61E964112921}</Project>
       <Name>Practica.Linq.Entities</Name>

@@ -1,5 +1,6 @@
 ﻿using Practica.Linq.Entities.Entities;
 using Practica.Linq.Logic.Interfaces;
+using Practica.Linq.Data.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +11,35 @@ namespace Practica.Linq.Logic.Logic
 {
     public class CategoriesLogic : IABMLogic<Categories, int>
     {
+        private readonly CategoriesData _categoriesData;
+
+        public CategoriesLogic()
+        {
+            _categoriesData = new CategoriesData();
+        }
         public void Add(Categories entity)
         {
-            throw new NotImplementedException();
+            _categoriesData.Add(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _categoriesData.Delete(id);
         }
 
         public List<Categories> GetAll()
         {
-            throw new NotImplementedException();
+            return _categoriesData.GetAll();
         }
 
         public Categories GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _categoriesData.GetByID(id);
         }
 
         public void Update(Categories entity)
         {
-            throw new NotImplementedException();
+            _categoriesData.Update(entity);
         }
     }
 }

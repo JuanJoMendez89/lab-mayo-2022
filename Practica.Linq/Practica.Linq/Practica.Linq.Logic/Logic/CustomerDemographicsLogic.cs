@@ -1,4 +1,5 @@
-﻿using Practica.Linq.Entities.Entities;
+﻿using Practica.Linq.Data.Data;
+using Practica.Linq.Entities.Entities;
 using Practica.Linq.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,36 @@ namespace Practica.Linq.Logic.Logic
 {
     public class CustomerDemographicsLogic : IABMLogic<CustomerDemographics, string>
     {
+        private readonly CustomerDemographicsData _customerDemographics;
+
+        public CustomerDemographicsLogic()
+        {
+            _customerDemographics = new CustomerDemographicsData();
+        }
+
         public void Add(CustomerDemographics entity)
         {
-            throw new NotImplementedException();
+            _customerDemographics.Add(entity);
         }
 
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            _customerDemographics.Delete(id);
         }
 
         public List<CustomerDemographics> GetAll()
         {
-            throw new NotImplementedException();
+            return _customerDemographics.GetAll();
         }
 
         public CustomerDemographics GetByID(string id)
         {
-            throw new NotImplementedException();
+            return _customerDemographics.GetByID(id);
         }
 
         public void Update(CustomerDemographics entity)
         {
-            throw new NotImplementedException();
+            _customerDemographics.Update(entity);
         }
     }
 }
