@@ -3,13 +3,14 @@ using Practica.Linq.Entities.Entities;
 using Practica.Linq.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class RegionLogic : IABMLogic<Region, int>
+    public class RegionLogic : BaseLogic<Region>, IABMLogic<Region, int>
     {
         private readonly RegionData _regionData;
 
@@ -28,14 +29,14 @@ namespace Practica.Linq.Logic.Logic
             _regionData.Delete(id);
         }
 
-        public List<Region> GetAll()
+        public DataTable GetAll()
         {
-            return _regionData.GetAll();
+            return ConvertirListaATabla(_regionData.GetAll());
         }
 
-        public Region GetByID(int id)
+        public DataTable GetByID(int id)
         {
-            return _regionData.GetByID(id);
+            return ConvertirEntidadATabla(_regionData.GetByID(id));
         }
 
         public void Update(Region entity)

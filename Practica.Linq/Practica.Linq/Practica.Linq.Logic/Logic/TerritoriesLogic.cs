@@ -3,13 +3,14 @@ using Practica.Linq.Entities.Entities;
 using Practica.Linq.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class TerritoriesLogic : IABMLogic<Territories, string>
+    public class TerritoriesLogic : BaseLogic<Territories>, IABMLogic<Territories, string>
     {
         private readonly TerritoriesData _territoriesData;
 
@@ -28,14 +29,14 @@ namespace Practica.Linq.Logic.Logic
             _territoriesData.Delete(id);
         }
 
-        public List<Territories> GetAll()
+        public DataTable GetAll()
         {
-            return _territoriesData.GetAll();
+            return ConvertirListaATabla(_territoriesData.GetAll());
         }
 
-        public Territories GetByID(string id)
+        public DataTable GetByID(string id)
         {
-            return _territoriesData.GetByID(id);
+            return ConvertirEntidadATabla(_territoriesData.GetByID(id));
         }
 
         public void Update(Territories entity)

@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Reflection;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class CategoriesLogic : IABMLogic<Categories, int>
+    public class CategoriesLogic : BaseLogic<Categories>,  IABMLogic<Categories, int>
     {
         private readonly CategoriesData _categoriesData;
 
@@ -27,19 +29,24 @@ namespace Practica.Linq.Logic.Logic
             _categoriesData.Delete(id);
         }
 
-        public List<Categories> GetAll()
+        public DataTable GetAll()
         {
-            return _categoriesData.GetAll();
+
+
+            List<Categories> categories =  _categoriesData.GetAll();
+
+            return ConvertirListaATabla(categories);
         }
 
-        public Categories GetByID(int id)
+        public DataTable GetByID(int id)
         {
-            return _categoriesData.GetByID(id);
+            return ConvertirEntidadATabla(_categoriesData.GetByID(id));
         }
 
         public void Update(Categories entity)
         {
             _categoriesData.Update(entity);
         }
+
     }
 }

@@ -84,5 +84,11 @@ namespace Practica.Linq.Data.Data
             }
 
         }
+
+        public List<Products> RecuperarProductosSinStock()
+        {
+            return _context.Products.Where(p => p.UnitsInStock < 1).ToList();
+        }
+
     }
 }

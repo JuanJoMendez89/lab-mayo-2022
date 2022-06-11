@@ -3,13 +3,14 @@ using Practica.Linq.Entities.Entities;
 using Practica.Linq.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class OrdersLogic : IABMLogic<Orders, int>
+    public class OrdersLogic : BaseLogic<Orders>, IABMLogic<Orders, int>
     {
         private readonly OrdersData _ordersData;
 
@@ -28,14 +29,14 @@ namespace Practica.Linq.Logic.Logic
             _ordersData.Delete(id);
         }
 
-        public List<Orders> GetAll()
+        public DataTable GetAll()
         {
-            return _ordersData.GetAll();
+            return ConvertirListaATabla(_ordersData.GetAll());
         }
 
-        public Orders GetByID(int id)
+        public DataTable GetByID(int id)
         {
-            return _ordersData.GetByID(id);
+            return ConvertirEntidadATabla(_ordersData.GetByID(id));
         }
 
         public void Update(Orders entity)

@@ -1,12 +1,14 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Practica.Linq.UI._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="container-fluid">   
+    
+    <div id="contenedor" class="container-fluid">   
+        <asp:HiddenField ID="val" ClientIDMode="Static" runat="server" />
         <div class="panel panel-default">
               <div class="panel-heading">Practica LinQ</div>
               <div class="panel-body">
-                    <asp:Button ID="consigna1" runat="server" CssClass="btn btn-primary" Text="Consigna 1" OnClick="consigna1_Click"/>
+
+                    <asp:Button ID="btnConsigna1" runat="server" CssClass="btn btn-primary" Text="Consigna 1" OnClientClick="return IngresarCustomerID()" OnClick="btnConsigna1_Click" />             
                     <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary" Text="Consigna 2" OnClick="Button2_Click"/>
                     <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary" Text="Consigna 3" OnClick="Button3_Click"/>
                     <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="Consigna 4" OnClick="Button4_Click"/>
@@ -32,9 +34,12 @@
               <div class="panel-heading">Resultado</div>
               <div class="panel-body">
                   <div id="contenedor-resultado"> 
-                      <asp:DataGrid ID="dgvResultado" runat="server">
 
-                      </asp:DataGrid>
+
+                        <asp:DataGrid ID="dgvResultado" runat="server" CssClass="table">
+
+                        </asp:DataGrid>
+
                   </div>
               </div>
         </div>

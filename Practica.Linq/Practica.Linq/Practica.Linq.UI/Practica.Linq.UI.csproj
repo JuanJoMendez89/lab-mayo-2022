@@ -139,6 +139,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Default.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -229,6 +230,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Practica.Linq.Entities\Practica.Linq.Entities.csproj">
+      <Project>{FD1EC02B-A511-4D42-B6E0-61E964112921}</Project>
+      <Name>Practica.Linq.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Practica.Linq.Logic\Practica.Linq.Logic.csproj">
+      <Project>{05CAF766-F3A9-4DF4-8897-51B6DF5AA60B}</Project>
+      <Name>Practica.Linq.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
