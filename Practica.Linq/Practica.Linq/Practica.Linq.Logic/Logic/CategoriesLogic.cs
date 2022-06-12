@@ -48,5 +48,8 @@ namespace Practica.Linq.Logic.Logic
             _categoriesData.Update(entity);
         }
 
+        public DataTable GetCategoriesConProducts() {
+            return ConvertirListaATabla(_categoriesData.GetCategoriesConProducts());
+        }
     }
 }

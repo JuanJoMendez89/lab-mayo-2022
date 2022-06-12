@@ -32,4 +32,5 @@ textarea {
 
 #contenedor-resultado {
     height: 500px;
+    overflow:scroll;
 }

@@ -85,9 +85,40 @@ namespace Practica.Linq.Data.Data
 
         }
 
-        public List<Products> RecuperarProductosSinStock()
+        public List<Products> GetProductosSinStock()
         {
             return _context.Products.Where(p => p.UnitsInStock < 1).ToList();
+        }
+
+        public List<Products> GetProductosConStock()
+        {
+            return _context.Products.Where(p => p.UnitsInStock > 0 && p.UnitPrice > 3).ToList();
+        }
+
+        public Products GetProducto789()
+        {
+            // Lo hice asi porque dudaba de la consigna, tambien podria haber usado el metodo GetByID pasando parametro 789.
+            return (from p in _context.Products
+                    where p.ProductID == 789
+                    select p).FirstOrDefault();
+        }
+
+        public List<Products> GetAllOrdenadosPorNombre()
+        {
+            return _context.Products.OrderBy(p => p.ProductName).ToList();
+        }
+
+        public List<Products> GetAllOrdenadosPorUnitInStock()
+        {
+            return (from p in _context.Products
+                    orderby p.UnitsInStock descending
+                    select p).ToList();
+        }
+
+        public Products GetPrimerProduct()
+        {
+            return (from p in _context.Products
+                    select p).Take(1).SingleOrDefault();
         }
 
     }

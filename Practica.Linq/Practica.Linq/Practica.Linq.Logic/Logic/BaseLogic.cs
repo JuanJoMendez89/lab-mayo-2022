@@ -16,22 +16,23 @@ namespace Practica.Linq.Logic.Logic
             DataTable dataTable = new DataTable();
             PropertyInfo[] properties = (typeof(T)).GetProperties();
 
-            foreach (PropertyInfo prop in properties)
-            {
-                dataTable.Columns.Add(prop.Name);
-            }
-
-            foreach (T item in list)
-            {
-                var itemValues = new object[properties.Length];
-
-                for (int i = 0; i < properties.Length; i++)
+            if (list.Count > 0) {
+                foreach (PropertyInfo prop in properties)
                 {
-
-                    itemValues[i] = properties[i].GetValue(item, null);
+                    dataTable.Columns.Add(prop.Name);
                 }
 
-                dataTable.Rows.Add(itemValues);
+                foreach (T item in list)
+                {
+                    var itemValues = new object[properties.Length];
+
+                    for (int i = 0; i < properties.Length; i++)
+                    {
+                        itemValues[i] = properties[i].GetValue(item, null);
+                    }
+
+                    dataTable.Rows.Add(itemValues);
+                }
             }
 
             return dataTable;
@@ -42,25 +43,76 @@ namespace Practica.Linq.Logic.Logic
             DataTable dataTable = new DataTable();
             PropertyInfo[] properties = (typeof(T)).GetProperties();
 
-            foreach (PropertyInfo prop in properties)
-            {
-                dataTable.Columns.Add(prop.Name);
-            }
+            if (entity != null) {
+                foreach (PropertyInfo prop in properties)
+                {
+                    dataTable.Columns.Add(prop.Name);
+                }
 
-            var itemValues = new object[properties.Length];
+                var itemValues = new object[properties.Length];
 
-            for (int i = 0; i < properties.Length; i++)
-            {
-                object value = properties[i].GetValue(entity);
-
-                if (value.GetType() == typeof(BaseEntity)){
+                for (int i = 0; i < properties.Length; i++)
+                {
                     itemValues[i] = properties[i].GetValue(entity);
                 }
 
-                itemValues[i] = properties[i].GetValue(entity);
+                dataTable.Rows.Add(itemValues);
             }
 
-            dataTable.Rows.Add(itemValues);
+            return dataTable;
+        }
+
+        protected DataTable ConvertirListaATabla(List<object> list)
+        {
+            DataTable dataTable = new DataTable();
+            PropertyInfo[] properties;
+
+            if (list.Count > 0) {
+                properties = list[0].GetType().GetProperties();
+
+                foreach (PropertyInfo prop in properties)
+                {
+                    dataTable.Columns.Add(prop.Name);
+                }
+
+                foreach (object item in list)
+                {
+                    var itemValues = new object[properties.Length];
+
+                    for (int i = 0; i < properties.Length; i++)
+                    {
+                        itemValues[i] = properties[i].GetValue(item, null);
+                    }
+
+                    dataTable.Rows.Add(itemValues);
+                }
+            }
+
+            return dataTable;
+        }
+
+        protected DataTable ConvertirEntidadATabla(object entity)
+        {
+            DataTable dataTable = new DataTable();
+            PropertyInfo[] properties;
+
+            if (entity != null) {
+                properties = entity.GetType().GetProperties();
+
+                foreach (PropertyInfo prop in properties)
+                {
+                    dataTable.Columns.Add(prop.Name);
+                }
+
+                var itemValues = new object[properties.Length];
+
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    itemValues[i] = properties[i].GetValue(entity);
+                }
+
+                dataTable.Rows.Add(itemValues);
+            }
 
             return dataTable;
         }

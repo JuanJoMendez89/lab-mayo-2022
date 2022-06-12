@@ -17,20 +17,12 @@ namespace Practica.Linq.UI
         private static string keyDataGridSource = "DataGridSource";
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetEvent();
             RegistrarScripts();
         }
 
         private void RegistrarScripts() {
             if (!Page.ClientScript.IsClientScriptIncludeRegistered("default-js")) {
-                Page.ClientScript.RegisterClientScriptInclude("default-js", "/Scripts/Default.js");
-            }
-        }
-
-        private void GetEvent() {
-            if (Request["__EVENTTARGET"] == "btnConsigna1" && Request["__EVENTARGUMENT"] == "")
-            {
-                CargarGrilla();
+                Page.ClientScript.RegisterClientScriptInclude(typeof(MasterPage),"default-js", "/Scripts/Default.js");
             }
         }
 
@@ -42,7 +34,7 @@ namespace Practica.Linq.UI
         }
 
         #region BUTTONS CONSIGNAS
-        protected void btnConsigna1_Click(object sender, EventArgs e)
+        protected void BtnConsigna1_Click(object sender, EventArgs e)
         {
             CustomersLogic cl = new CustomersLogic();
             string id = val.Value;
@@ -52,70 +44,113 @@ namespace Practica.Linq.UI
             CargarGrilla(customer);
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void BtnConsigna2_Click(object sender, EventArgs e)
         {
             ProductsLogic pl = new ProductsLogic();
 
-            DataTable products = pl.RecuperarProductosSinStock();
+            DataTable products = pl.GetProductosSinStock();
 
             CargarGrilla(products);
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void BtnConsigna3_Click(object sender, EventArgs e)
         {
+            ProductsLogic pl = new ProductsLogic();
 
+            DataTable products = pl.GetProductosConStock();
+
+            CargarGrilla(products);
         }
 
-        protected void Button4_Click(object sender, EventArgs e)
+        protected void BtnConsigna4_Click(object sender, EventArgs e)
         {
+            CustomersLogic cl = new CustomersLogic();
 
+            DataTable customer = cl.GetByRegionWa();
+
+            CargarGrilla(customer);
         }
 
-        protected void Button5_Click(object sender, EventArgs e)
+        protected void BtnConsigna5_Click(object sender, EventArgs e)
         {
+            ProductsLogic pl = new ProductsLogic();
 
+            DataTable products = pl.GetProducto789();
+
+            CargarGrilla(products);
         }
 
-        protected void Button6_Click(object sender, EventArgs e)
+        protected void BtnConsigna6_Click(object sender, EventArgs e)
         {
+            CustomersLogic cl = new CustomersLogic();
 
+            DataTable customer = cl.GetNombres();
+
+            CargarGrilla(customer);
         }
 
-        protected void Button7_Click(object sender, EventArgs e)
+        protected void BtnConsigna7_Click(object sender, EventArgs e)
         {
+            CustomersLogic cl = new CustomersLogic();
 
+            DataTable customer = cl.GetCustomerByFechaOrder();
+
+            CargarGrilla(customer);
         }
         #endregion
 
         #region BUTTONS CONSIGNAS OPCIONALES
-        protected void Button8_Click(object sender, EventArgs e)
+        protected void BtnConsigna8_Click(object sender, EventArgs e)
         {
+            CustomersLogic cl = new CustomersLogic();
 
+            DataTable customer = cl.GetByPrimerosRegionWa();
+
+            CargarGrilla(customer);
         }
 
-        protected void Button9_Click(object sender, EventArgs e)
+        protected void BtnConsigna9_Click(object sender, EventArgs e)
         {
+            ProductsLogic pl = new ProductsLogic();
 
+            DataTable products = pl.GetAllOrdenadosPorNombre();
+
+            CargarGrilla(products);
         }
 
-        protected void Button10_Click(object sender, EventArgs e)
+        protected void BtnConsigna10_Click(object sender, EventArgs e)
         {
+            ProductsLogic pl = new ProductsLogic();
 
+            DataTable products = pl.GetAllOrdenadosPorUnitInStock();
+
+            CargarGrilla(products);
         }
 
-        protected void Button11_Click(object sender, EventArgs e)
+        protected void BtnConsigna11_Click(object sender, EventArgs e)
         {
+            CategoriesLogic cl = new CategoriesLogic();
+            DataTable categories = cl.GetCategoriesConProducts();
 
+            CargarGrilla(categories);
         }
 
-        protected void Button12_Click(object sender, EventArgs e)
+        protected void BtnConsigna12_Click(object sender, EventArgs e)
         {
+            ProductsLogic pl = new ProductsLogic();
 
+            DataTable products = pl.GetPrimerProduct();
+
+            CargarGrilla(products);
         }
 
-        protected void Button13_Click(object sender, EventArgs e)
+        protected void BtnConsigna13_Click(object sender, EventArgs e)
         {
+            CustomersLogic cl = new CustomersLogic();
 
+            DataTable customers = cl.GetCustomerConOrdenesAsociadas();
+
+            CargarGrilla(customers);
         }
         #endregion
 

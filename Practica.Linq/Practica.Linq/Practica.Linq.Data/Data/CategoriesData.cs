@@ -79,5 +79,22 @@ namespace Practica.Linq.Data.Data
             }
             
         }
+
+        public List<object> GetCategoriesConProducts() {
+            List<object> list = new List<object>();
+
+            var query = (from c in _context.Categories
+                         join p in _context.Products on c.CategoryID equals p.CategoryID
+                         orderby c.CategoryName
+                         select new
+                         {
+                             CategoryName = c.CategoryName,
+                             ProductName = p.ProductName
+                         }).ToList();
+
+            list.AddRange(query);
+
+            return list;
+        }
     }
 }

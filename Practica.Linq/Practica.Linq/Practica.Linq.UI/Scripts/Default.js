@@ -1,5 +1,5 @@
 ﻿function IngresarCustomerID() {
-    let id = prompt('Ingrese id (ej: ALFKI)');
+    let id = prompt('Ingrese id', 'ALFKI');
     $('#val').val(id);
 
     if (id == null || id == "")

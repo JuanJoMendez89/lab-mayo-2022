@@ -87,5 +87,70 @@ namespace Practica.Linq.Data.Data
             }
         }
 
+        public List<Customers> GetByRegionWa()
+        {
+           List<Customers> customers = (from c in _context.Customers
+                        where c.Region == "WA"
+                        select c).ToList();
+
+            return customers;
+        }
+
+        public List<object> GetNombres() {
+            List<object> list = new List<object>();
+
+            var customers = (from c in _context.Customers
+                             select new
+                             {
+                                 ContactNameUpperCase = c.ContactName.ToUpper(),
+                                 ContactNameLowerCase = c.ContactName.ToLower(),
+                             }).ToList();
+
+            list.AddRange(customers);
+
+            return list;
+        }
+
+        public List<object> GetCustomerByFechaOrder()
+        {
+            List<object> list = new List<object>();
+
+            var customers = (from c in _context.Customers
+                             join o in _context.Orders on c.CustomerID equals o.CustomerID
+                             where o.OrderDate > new DateTime(1997,1,1) && c.Region == "WA"
+                             select new
+                             {
+                                 ContactName = c.ContactName,
+                                 OrderDate = o.OrderDate,
+                             }).ToList();
+
+            list.AddRange(customers);
+
+            return list;
+        }
+
+        public List<Customers> GetByPrimerosRegionWa()
+        {
+            return _context.Customers.Where(c => c.Region == "WA").Take(3).ToList();
+        }
+
+        public List<object> GetCustomerConOrdenesAsociadas()
+        {
+            List<object> list = new List<object>();
+
+            var query = (from c in _context.Customers
+                             join o in _context.Orders on c.CustomerID equals o.CustomerID
+                             group c by c.ContactName into ContactName
+                             select new
+                             {
+                                 ContactName = ContactName.Key,
+                                 OrderDate = ContactName.Select(g => g.Orders.Count).FirstOrDefault(),
+                             }).ToList();
+
+            list.AddRange(query);
+
+            return list;
+        }
+
     }
 }

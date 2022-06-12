@@ -36,16 +36,84 @@ namespace Practica.Linq.Logic.Logic
 
         public DataTable GetByID(string id)
         {
-            DataTable customer = ConvertirEntidadATabla(_customersData.GetByID(id));
-            customer.Columns.Remove("Orders");
-            customer.Columns.Remove("CustomerDemographics");
+            try
+            {
+                DataTable tbCustomer = new DataTable();
+                Customers customer = _customersData.GetByID(id);
 
-            return customer;
+                if (customer != null)
+                {
+                    tbCustomer = ConvertirEntidadATabla(_customersData.GetByID(id));
+                    tbCustomer.Columns.Remove("Orders");
+                    tbCustomer.Columns.Remove("CustomerDemographics");
+                }
+                else {
+                    tbCustomer.Columns.Add(" ");
+                    tbCustomer.Rows.Add("Sin resultados.");
+                }
+
+                return tbCustomer;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void Update(Customers entity)
         {
             _customersData.Update(entity);
+        }
+
+        public DataTable GetByRegionWa() {
+            DataTable tbCustomers = new DataTable();
+            List<Customers> customers = _customersData.GetByRegionWa();
+
+            if (customers.Count > 0)
+            {
+                tbCustomers = ConvertirListaATabla(customers);
+                tbCustomers.Columns.Remove("Orders");
+                tbCustomers.Columns.Remove("CustomerDemographics");
+            }
+            else
+            {
+                tbCustomers.Columns.Add(" ");
+                tbCustomers.Rows.Add("Sin resultados.");
+            }
+            return tbCustomers;
+        }
+
+        public DataTable GetNombres()
+        {
+            return ConvertirListaATabla(_customersData.GetNombres());
+        }
+
+        public DataTable GetCustomerByFechaOrder()
+        {
+            return ConvertirListaATabla(_customersData.GetCustomerByFechaOrder());
+        }
+
+        public DataTable GetByPrimerosRegionWa()
+        {
+            DataTable tbCustomers = new DataTable();
+            List<Customers> customers = _customersData.GetByPrimerosRegionWa();
+
+            if (customers.Count > 0)
+            {
+                tbCustomers = ConvertirListaATabla(customers);
+                tbCustomers.Columns.Remove("Orders");
+                tbCustomers.Columns.Remove("CustomerDemographics");
+            }
+            else
+            {
+                tbCustomers.Columns.Add(" ");
+                tbCustomers.Rows.Add("Sin resultados.");
+            }
+            return tbCustomers;
+        }
+
+        public DataTable GetCustomerConOrdenesAsociadas() {
+            return ConvertirListaATabla(_customersData.GetCustomerConOrdenesAsociadas());
         }
     }
 }
