@@ -41,7 +41,7 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetByID(id);
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna1").ToString();
+            Descripcion.InnerText = $"Consigna 1: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna1")}";
 
             CargarGrilla(customer);
         }
@@ -52,7 +52,7 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetProductosSinStock();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna2").ToString();
+            Descripcion.InnerText = $"Consigna 2: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna2")}";
 
             CargarGrilla(products);
         }
@@ -63,7 +63,7 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetProductosConStock();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna3").ToString();
+            Descripcion.InnerText = $"Consigna 3: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna3")}";
 
             CargarGrilla(products);
         }
@@ -74,7 +74,7 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetByRegionWa();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna4").ToString();
+            Descripcion.InnerText = $"Consigna 4: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna4")}";
 
             CargarGrilla(customer);
         }
@@ -85,7 +85,7 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetProducto789();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna5").ToString();
+            Descripcion.InnerText = $"Consigna 5: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna5")}";
 
             CargarGrilla(products);
         }
@@ -96,7 +96,7 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetNombres();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna6").ToString();
+            Descripcion.InnerText = $"Consigna 6: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna6")}";
 
             CargarGrilla(customer);
         }
@@ -107,7 +107,7 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetCustomerByFechaOrder();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna7").ToString();
+            Descripcion.InnerText = $"Consigna 7: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna7")}";
 
             CargarGrilla(customer);
         }
@@ -120,7 +120,7 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetByPrimerosRegionWa();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna8").ToString();
+            Descripcion.InnerText = $"Consigna 8: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna8")}";
 
             CargarGrilla(customer);
         }
@@ -131,7 +131,7 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetAllOrdenadosPorNombre();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna9").ToString();
+            Descripcion.InnerText = $"Consigna 9: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna9")}";
 
             CargarGrilla(products);
         }
@@ -142,7 +142,7 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetAllOrdenadosPorUnitInStock();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna10").ToString();
+            Descripcion.InnerText = $"Consigna 10: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna10")}";
 
             CargarGrilla(products);
         }
@@ -153,7 +153,7 @@ namespace Practica.Linq.UI
             
             DataTable categories = cl.GetCategoriesConProducts();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna11").ToString();
+            Descripcion.InnerText = $"Consigna 11: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna11")}";
 
             CargarGrilla(categories);
         }
@@ -164,7 +164,7 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetPrimerProduct();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna12").ToString();
+            Descripcion.InnerText = $"Consigna 12: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna12")}";
 
             CargarGrilla(products);
         }
@@ -175,7 +175,7 @@ namespace Practica.Linq.UI
 
             DataTable customers = cl.GetCustomerConOrdenesAsociadas();
 
-            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna13").ToString();
+            Descripcion.InnerText = $"Consigna 13: {HttpContext.GetGlobalResourceObject("Concepts", "Consigna13")}";
 
             CargarGrilla(customers);
         }
