@@ -141,6 +141,15 @@ namespace Practica.Linq.UI
         protected global::System.Web.UI.WebControls.Button BtnConsigna13;
 
         /// <summary>
+        /// Control Descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Descripcion;
+
+        /// <summary>
         /// Control dgvResultado.
         /// </summary>
         /// <remarks>

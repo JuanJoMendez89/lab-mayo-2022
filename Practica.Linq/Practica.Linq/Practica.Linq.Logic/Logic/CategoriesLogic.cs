@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class CategoriesLogic : BaseLogic<Categories>,  IABMLogic<Categories, int>
+    public class CategoriesLogic : BaseLogic<Categories, int>
     {
         private readonly CategoriesData _categoriesData;
 
@@ -19,31 +19,29 @@ namespace Practica.Linq.Logic.Logic
         {
             _categoriesData = new CategoriesData();
         }
-        public void Add(Categories entity)
+        public override void Add(Categories entity)
         {
             _categoriesData.Add(entity);
         }
 
-        public void Delete(int id)
+        public override void Delete(int id)
         {
             _categoriesData.Delete(id);
         }
 
-        public DataTable GetAll()
+        public override DataTable GetAll()
         {
-
-
             List<Categories> categories =  _categoriesData.GetAll();
 
             return ConvertirListaATabla(categories);
         }
 
-        public DataTable GetByID(int id)
+        public override DataTable GetByID(int id)
         {
             return ConvertirEntidadATabla(_categoriesData.GetByID(id));
         }
 
-        public void Update(Categories entity)
+        public override void Update(Categories entity)
         {
             _categoriesData.Update(entity);
         }

@@ -41,6 +41,8 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetByID(id);
 
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna1").ToString();
+
             CargarGrilla(customer);
         }
 
@@ -49,6 +51,8 @@ namespace Practica.Linq.UI
             ProductsLogic pl = new ProductsLogic();
 
             DataTable products = pl.GetProductosSinStock();
+
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna2").ToString();
 
             CargarGrilla(products);
         }
@@ -59,6 +63,8 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetProductosConStock();
 
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna3").ToString();
+
             CargarGrilla(products);
         }
 
@@ -67,6 +73,8 @@ namespace Practica.Linq.UI
             CustomersLogic cl = new CustomersLogic();
 
             DataTable customer = cl.GetByRegionWa();
+
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna4").ToString();
 
             CargarGrilla(customer);
         }
@@ -77,6 +85,8 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetProducto789();
 
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna5").ToString();
+
             CargarGrilla(products);
         }
 
@@ -86,6 +96,8 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetNombres();
 
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna6").ToString();
+
             CargarGrilla(customer);
         }
 
@@ -94,6 +106,8 @@ namespace Practica.Linq.UI
             CustomersLogic cl = new CustomersLogic();
 
             DataTable customer = cl.GetCustomerByFechaOrder();
+
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna7").ToString();
 
             CargarGrilla(customer);
         }
@@ -106,6 +120,8 @@ namespace Practica.Linq.UI
 
             DataTable customer = cl.GetByPrimerosRegionWa();
 
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna8").ToString();
+
             CargarGrilla(customer);
         }
 
@@ -114,6 +130,8 @@ namespace Practica.Linq.UI
             ProductsLogic pl = new ProductsLogic();
 
             DataTable products = pl.GetAllOrdenadosPorNombre();
+
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna9").ToString();
 
             CargarGrilla(products);
         }
@@ -124,13 +142,18 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetAllOrdenadosPorUnitInStock();
 
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna10").ToString();
+
             CargarGrilla(products);
         }
 
         protected void BtnConsigna11_Click(object sender, EventArgs e)
         {
             CategoriesLogic cl = new CategoriesLogic();
+            
             DataTable categories = cl.GetCategoriesConProducts();
+
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna11").ToString();
 
             CargarGrilla(categories);
         }
@@ -141,6 +164,8 @@ namespace Practica.Linq.UI
 
             DataTable products = pl.GetPrimerProduct();
 
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna12").ToString();
+
             CargarGrilla(products);
         }
 
@@ -149,6 +174,8 @@ namespace Practica.Linq.UI
             CustomersLogic cl = new CustomersLogic();
 
             DataTable customers = cl.GetCustomerConOrdenesAsociadas();
+
+            Descripcion.InnerText = HttpContext.GetGlobalResourceObject("Concepts", "Consigna13").ToString();
 
             CargarGrilla(customers);
         }

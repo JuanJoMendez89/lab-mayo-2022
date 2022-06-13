@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class TerritoriesLogic : BaseLogic<Territories>, IABMLogic<Territories, string>
+    public class TerritoriesLogic : BaseLogic<Territories, string>
     {
         private readonly TerritoriesData _territoriesData;
 
@@ -19,27 +19,27 @@ namespace Practica.Linq.Logic.Logic
             _territoriesData = new TerritoriesData();
         }
 
-        public void Add(Territories entity)
+        public override void Add(Territories entity)
         {
             _territoriesData.Add(entity);
         }
 
-        public void Delete(string id)
+        public override void Delete(string id)
         {
             _territoriesData.Delete(id);
         }
 
-        public DataTable GetAll()
+        public override DataTable GetAll()
         {
             return ConvertirListaATabla(_territoriesData.GetAll());
         }
 
-        public DataTable GetByID(string id)
+        public override DataTable GetByID(string id)
         {
             return ConvertirEntidadATabla(_territoriesData.GetByID(id));
         }
 
-        public void Update(Territories entity)
+        public override void Update(Territories entity)
         {
             _territoriesData.Update(entity);
         }

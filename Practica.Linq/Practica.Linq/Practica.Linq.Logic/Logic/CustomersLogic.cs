@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class CustomersLogic : BaseLogic<Customers>, IABMLogic<Customers, string>
+    public class CustomersLogic : BaseLogic<Customers, string>
     {
         private readonly CustomersData _customersData;
 
@@ -19,22 +19,22 @@ namespace Practica.Linq.Logic.Logic
             _customersData = new CustomersData();
         }
 
-        public void Add(Customers entity)
+        public override void Add(Customers entity)
         {
             _customersData.Add(entity);
         }
 
-        public void Delete(string id)
+        public override void Delete(string id)
         {
             _customersData.Delete(id);
         }
 
-        public DataTable GetAll()
+        public override DataTable GetAll()
         {
             return ConvertirListaATabla(_customersData.GetAll());
         }
 
-        public DataTable GetByID(string id)
+        public override DataTable GetByID(string id)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Practica.Linq.Logic.Logic
             }
         }
 
-        public void Update(Customers entity)
+        public override void Update(Customers entity)
         {
             _customersData.Update(entity);
         }
@@ -90,7 +90,13 @@ namespace Practica.Linq.Logic.Logic
 
         public DataTable GetCustomerByFechaOrder()
         {
-            return ConvertirListaATabla(_customersData.GetCustomerByFechaOrder());
+            DataTable tbCustomer = ConvertirListaATabla(_customersData.GetCustomerByFechaOrder());
+
+            foreach (DataRow row in tbCustomer.Rows) {
+                row["OrderDate"] = Convert.ToDateTime(row["OrderDate"]).ToString("dd/MM/yyyy");
+            }
+
+            return tbCustomer;
         }
 
         public DataTable GetByPrimerosRegionWa()

@@ -139,13 +139,11 @@ namespace Practica.Linq.Data.Data
             List<object> list = new List<object>();
 
             var query = (from c in _context.Customers
-                             join o in _context.Orders on c.CustomerID equals o.CustomerID
-                             group c by c.ContactName into ContactName
-                             select new
-                             {
-                                 ContactName = ContactName.Key,
-                                 OrderDate = ContactName.Select(g => g.Orders.Count).FirstOrDefault(),
-                             }).ToList();
+                         select new
+                         {
+                             ContactName = c.ContactName,
+                             Orders = c.Orders.Count,
+                         }).ToList();
 
             list.AddRange(query);
 

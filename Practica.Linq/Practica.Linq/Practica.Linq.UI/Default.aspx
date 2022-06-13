@@ -32,6 +32,13 @@
                 </div>
 
                 <div class="panel panel-default">
+                        <div class="panel-heading">Descripcion</div>
+                        <div class="panel-body">
+                            <label id="Descripcion" runat="server"></label>
+                        </div>
+                </div>
+
+                <div class="panel panel-default">
                         <div class="panel-heading">Resultado</div>
                         <div class="panel-body">
                             <div id="contenedor-resultado"> 

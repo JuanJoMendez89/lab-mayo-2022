@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public class OrdersLogic : BaseLogic<Orders>, IABMLogic<Orders, int>
+    public class OrdersLogic : BaseLogic<Orders, int>
     {
         private readonly OrdersData _ordersData;
 
@@ -19,27 +19,27 @@ namespace Practica.Linq.Logic.Logic
             _ordersData = new OrdersData();
         }
 
-        public void Add(Orders entity)
+        public override void Add(Orders entity)
         {
             _ordersData.Add(entity);
         }
 
-        public void Delete(int id)
+        public override void Delete(int id)
         {
             _ordersData.Delete(id);
         }
 
-        public DataTable GetAll()
+        public override DataTable GetAll()
         {
             return ConvertirListaATabla(_ordersData.GetAll());
         }
 
-        public DataTable GetByID(int id)
+        public override DataTable GetByID(int id)
         {
             return ConvertirEntidadATabla(_ordersData.GetByID(id));
         }
 
-        public void Update(Orders entity)
+        public override void Update(Orders entity)
         {
              _ordersData.Update(entity);
         }

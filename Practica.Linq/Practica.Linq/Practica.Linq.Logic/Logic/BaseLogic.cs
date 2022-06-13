@@ -1,4 +1,5 @@
 ﻿using Practica.Linq.Entities.Entities;
+using Practica.Linq.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,8 +10,18 @@ using System.Threading.Tasks;
 
 namespace Practica.Linq.Logic.Logic
 {
-    public abstract class BaseLogic<T>
+    public abstract class BaseLogic<T, IDType> : IABMLogic<T, IDType>
     {
+        public abstract DataTable GetAll();
+
+        public abstract DataTable GetByID(IDType id);
+
+        public abstract void Add(T entity);
+
+        public abstract void Update(T entity);
+
+        public abstract void Delete(IDType id);
+
         protected DataTable ConvertirListaATabla(List<T> list)
         {
             DataTable dataTable = new DataTable();
@@ -116,5 +127,8 @@ namespace Practica.Linq.Logic.Logic
 
             return dataTable;
         }
+
+
+
     }
 }
