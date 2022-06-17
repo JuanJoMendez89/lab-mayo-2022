@@ -1,5 +1,8 @@
-﻿using Practica.EF.Entities.Entities;
+﻿using Practica.EF.Data.Data;
+using Practica.EF.Entities.Entities;
+using Practica.EF.Entities.Models;
 using Practica.EF.Logic.Interfaces;
+using Practica.EF.Logic.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,86 +10,80 @@ using System.Linq;
 
 namespace Practica.EF.Logic.Logic
 {
-    public class ShippersLogic : BaseLogic, ICRUDLogic<Shippers, int>
+    public class ShippersLogic : BaseLogic, ICRUDLogic<ShippersDTO, int>
     {
-        public void Add(Shippers entity)
+        private ShippersData _shippersData;
+
+        public ShippersLogic()
+        {
+            _shippersData = new ShippersData();
+        }
+
+        public void Add(ShippersDTO shippersDTO)
         {
             try
             {
-                _context.Shippers.Add(entity);
-
-                _context.SaveChanges();
+                _shippersData.Add(shippersDTO.MapToShippers());
             }
             catch (Exception ex)
             {
-                _context.Entry(entity).State = EntityState.Detached;
                 throw ex.GetBaseException();
             }
-
         }
 
         public void Delete(int id)
         {
-            Shippers shipper = _context.Shippers.Find(id);
-
             try
             {
-                _context.Shippers.Remove(shipper);
+                _shippersData.Delete(id);
 
-                _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                _context.Entry(shipper).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
         }
 
-        public List<Shippers> GetAll()
+        public List<ShippersDTO> GetAll()
         {
             try
             {
-                return _context.Shippers.ToList();
+                List<Shippers> shippers = _shippersData.GetAll();
+
+                return shippers.Select(c => c.CreateDTO()).ToList();
             }
             catch (Exception ex)
             {
 
                 throw ex.GetBaseException();
             }
-
         }
 
-        public Shippers GetByID(int id)
+        public ShippersDTO GetByID(int id)
         {
             try
             {
-                return _context.Shippers.Find(Convert.ToInt32(id));
+                return _shippersData.GetByID(Convert.ToInt32(id)).CreateDTO();
             }
             catch (Exception ex)
             {
-
                 throw ex.GetBaseException();
             }
         }
 
-        public void Update(Shippers entity)
+        public void Update(ShippersDTO shippersDTO)
         {
-            Shippers shipper = _context.Shippers.Find(entity.ShipperID);
-
             try
             {
-                shipper.CompanyName = entity.CompanyName;
-                shipper.Phone = entity.Phone;
-
-                _context.SaveChanges();
+                _shippersData.Update(shippersDTO.MapToShippers());
             }
             catch (Exception ex)
             {
-                _context.Entry(shipper).State = EntityState.Unchanged;
                 throw ex.GetBaseException();
             }
 
         }
+
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Practica.EF.Logic.Interfaces
 {
-    public interface ICRUDLogic<T, IDType> where T : BaseEntity
+    public interface ICRUDLogic<T, IDType>
     {
         List<T> GetAll();
         T GetByID(IDType id);

@@ -51,10 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\CustomersExtensions.cs" />
+    <Compile Include="Extensions\ShippersExtensions.cs" />
     <Compile Include="Interfaces\ICRUDLogic.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
     <Compile Include="Logic\CustomersLogic.cs" />
     <Compile Include="Logic\ShippersLogic.cs" />
+    <Compile Include="Mappers\CustomersMapper.cs" />
+    <Compile Include="Mappers\ShippersMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

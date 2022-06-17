@@ -54,6 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\NorthwindContext.cs" />
+    <Compile Include="Data\BaseData.cs" />
+    <Compile Include="Data\CustomersData.cs" />
+    <Compile Include="Data\ShippersData.cs" />
+    <Compile Include="Interfaces\ICRUDData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,11 +65,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Practica.EF.Common\Practica.EF.Common.csproj">
+      <Project>{ED97664C-EFD3-4F40-A8F6-1778090048DE}</Project>
+      <Name>Practica.EF.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
       <Project>{cb885959-315b-416a-a7aa-04ab3f86c79e}</Project>
       <Name>Practica.EF.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

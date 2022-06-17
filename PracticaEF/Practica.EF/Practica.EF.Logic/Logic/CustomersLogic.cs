@@ -1,5 +1,7 @@
 ﻿using Practica.EF.Common.Exceptions;
+using Practica.EF.Data.Data;
 using Practica.EF.Entities.Entities;
+using Practica.EF.Entities.Models;
 using Practica.EF.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,21 +9,24 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 
+using Practica.EF.Logic.Extensions;
+
 namespace Practica.EF.Logic.Logic
 {
-    public class CustomersLogic : BaseLogic, ICRUDLogic<Customers, string>
+    public class CustomersLogic : BaseLogic, ICRUDLogic<CustomersDTO, string>
     {
-        public void Add(Customers entity)
+        private CustomersData _customersData;
+
+        public CustomersLogic()
+        {
+            _customersData = new CustomersData();
+        }
+
+        public void Add(CustomersDTO entity)
         {
             try
             {
-                if (_context.Customers.Any(c => c.CustomerID == entity.CustomerID)) {
-                    throw new DuplicateKeyException("Can't insert duplicate key.", entity.CustomerID);
-                }
-
-                _context.Customers.Add(entity);
-
-                _context.SaveChanges();
+                _customersData.Add(entity.MapToCustomers());
             }
             catch (Exception ex)
             {
@@ -32,62 +37,44 @@ namespace Practica.EF.Logic.Logic
 
         public void Delete(string id)
         {
-            Customers customer = _context.Customers.Find(id);
-
             try
             {
-                _context.Customers.Remove(customer);
-
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _context.Entry(customer).State = EntityState.Unchanged;
-                throw ex.GetBaseException();
-            }
-
-        }
-
-        public List<Customers> GetAll()
-        {
-            try
-            {
-                return _context.Customers.ToList();
+                _customersData.Delete(id);
             }
             catch (Exception ex)
             {
                 throw ex.GetBaseException();
             }
-
         }
 
-        public Customers GetByID(string id)
+        public List<CustomersDTO> GetAll()
         {
-            return _context.Customers.Find(id);
-        }
-
-        public void Update(Customers entity)
-        {
-            Customers customer = _context.Customers.Find(entity.CustomerID);
-
             try
             {
-                customer.CompanyName = entity.CompanyName;
-                customer.ContactName = entity.ContactName;
-                customer.ContactTitle = entity.ContactTitle;
-                customer.Address = entity.Address;
-                customer.City = entity.City;
-                customer.Region = entity.Region;
-                customer.PostalCode = entity.PostalCode;
-                customer.Country = entity.Country;
-                customer.Phone = entity.Phone;
-                customer.Fax = entity.Fax;
+                List<Customers> customers = _customersData.GetAll();
 
-                _context.SaveChanges();
+                return customers.Select(c => c.CreateDTO()).ToList();
             }
             catch (Exception ex)
             {
-                _context.Entry(customer).State = EntityState.Unchanged;
+                throw ex.GetBaseException();
+            }
+
+        }
+
+        public CustomersDTO GetByID(string id)
+        {
+            return _customersData.GetByID(id).CreateDTO();
+        }
+
+        public void Update(CustomersDTO entity)
+        {
+            try
+            {
+                _customersData.Update(entity.MapToCustomers());
+            }
+            catch (Exception ex)
+            {
                 throw ex.GetBaseException();
             }
 
