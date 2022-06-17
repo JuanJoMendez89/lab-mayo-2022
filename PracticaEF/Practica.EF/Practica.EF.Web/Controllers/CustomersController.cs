@@ -48,6 +48,22 @@ namespace Practica.EF.Web.Controllers
             }
         }
 
+        // PUT: Customers/Update
+        [HttpPut]
+        public ActionResult Update(CustomersDTO customer)
+        {
+            try
+            {
+                customerLogic.Update(customer);
+
+                return Json(new { status = "ok", message = "Customer updated." }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         // GET: Customers/Edit/5
         public ActionResult Edit(int id)
         {

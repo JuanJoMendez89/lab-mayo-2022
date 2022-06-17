@@ -1,0 +1,12 @@
+﻿#modal-create, #modal-edit {
+    width: 100%;
+    padding: 50px;
+}
+
+#divCreate, #divEdit {
+    display: none;
+}
+
+.m-15 {
+    margin: 15px;
+}

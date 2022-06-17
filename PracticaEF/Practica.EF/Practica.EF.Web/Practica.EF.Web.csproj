@@ -160,6 +160,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MyCustomModal.js" />
     <Content Include="Scripts\Pages\CustomersList.js" />
+    <Content Include="Content\Customers.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -36,6 +36,9 @@ namespace Practica.EF.Web
                 bundles.Add(new ScriptBundle("~/bundles/MyCustomModal").Include(
                     "~/Scripts/MyCustomModal.js"));
 
+            bundles.Add(new StyleBundle("~/Styles/Customers")
+                .Include("~/Content/Customers.css"));
+
             #endregion
 
         }

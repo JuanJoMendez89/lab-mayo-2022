@@ -7,10 +7,13 @@
 
 @Scripts.Render("~/Pages/CustomerList")
 
+@Styles.Render("~/Styles/Customers")
+
+
 <h2>View</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" onclick="initCreate()">Create New</button>
 </p>
 <table class="table">
     <tr>
@@ -38,63 +41,162 @@
         <th></th>
     </tr>
     @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CompanyName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Region)
-                </td>
-                <td>
-                    <button type="button" onclick="addCustomer()">Add</button>
-                    <button type="button">Edit</button>
-                    <button type="button">Del</button>
-                    <button type="button">Del</button>
-                    <button type="button">Del</button>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                <button type="button" onclick="initEdit('@Json.Encode(item)')">Edit</button>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>
 
-<p id="test">xD</p>
+<div id="divCreate">
+    <div id="modal-create" class="container-fluid text-center">
+        <form id="create-form">
 
+            <div class="row m-15">
+                <label class="col-xs-6">Customer ID</label>
+                <input class="col-xs-6" type="text" name="CustomerID" maxlength="5" />
+            </div>
 
-@*<div id="mymodal-back">
-    <div class="mymodal-container">
-        <div class="mymodal-header">
-        </div>
-        <div class="mymodal-body">
+            <div class="row m-15">
+                <label class="col-xs-6">Company name</label>
+                <input class="col-xs-6" type="text" name="CompanyName" maxlength="40" />
+            </div>
 
-        </div>
-        <div class="mymodal-footer">
-            <button type="button" class="btn btn-primary mymodal-button">Aceptar</button>
-            <button type="button" class="btn btn-primary mymodal-button">Cancelar</button>
-        </div>
+            <div class="row m-15">
+                <label class="col-xs-6">Contact name</label>
+                <input type="text" class="col-xs-6" name="ContactName" maxlength="30" />
+            </div>
 
+            <div class="row m-15">
+                <label class="col-xs-6">Contact title</label>
+                <input type="text" class="col-xs-6" name="ContactTitle" maxlength="30" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Adress</label>
+                <input type="text" class="col-xs-6" name="Address" maxlength="60" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">City</label>
+                <input type="text" class="col-xs-6" name="City" maxlength="15" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Region</label>
+                <input type="text" class="col-xs-6" name="Region" maxlength="15" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Postal code</label>
+                <input type="text" class="col-xs-6  number-input" name="PostalCode" maxlength="10" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Country</label>
+                <input type="text" class="col-xs-6" name="Country" maxlength="15" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Phone</label>
+                <input type="text" class="col-xs-6  number-input" name="Phone" maxlength="24" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Fax</label>
+                <input type="text" class="col-xs-6 number-input" name="Fax" maxlength="24" />
+            </div>
+
+        </form>
     </div>
 </div>
 
-<style>
+<div id="divEdit">
+    <div id="modal-edit" class="container-fluid text-center">
+        <form id="edit-form">
 
+            <div class="row m-15">
+                <label class="col-xs-6">Customer ID</label>
+                <input class="col-xs-6" type="text" name="CustomerID" maxlength="5" disabled/>
+            </div>
 
-</style>*@
+            <div class="row m-15">
+                <label class="col-xs-6">Company name</label>
+                <input class="col-xs-6" type="text" name="CompanyName" maxlength="40"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Contact name</label>
+                <input type="text" class="col-xs-6" name="ContactName" maxlength="30"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Contact title</label>
+                <input type="text" class="col-xs-6" name="ContactTitle" maxlength="30"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Adress</label>
+                <input type="text" class="col-xs-6" name="Address" maxlength="60"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">City</label>
+                <input type="text" class="col-xs-6" name="City" maxlength="15"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Region</label>
+                <input type="text" class="col-xs-6" name="Region" maxlength="15"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Postal code</label>
+                <input type="text" class="col-xs-6  number-input" name="PostalCode" maxlength="10"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Country</label>
+                <input type="text" class="col-xs-6" name="Country" maxlength="15"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Phone</label>
+                <input type="text" class="col-xs-6  number-input" name="Phone" maxlength="24"/>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Fax</label>
+                <input type="text" class="col-xs-6 number-input" name="Fax" maxlength="24"/>
+            </div>
+
+        </form>
+    </div>
+</div>
