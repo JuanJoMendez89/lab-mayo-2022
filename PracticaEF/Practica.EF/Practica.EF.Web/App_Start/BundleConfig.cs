@@ -24,7 +24,20 @@ namespace Practica.EF.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/MyCustomModal.css"));
+
+
+            #region My bundles
+                bundles.Add(new ScriptBundle("~/Pages/CustomerList").Include(
+                      "~/Scripts/Pages/CustomersList.js"));
+
+
+                bundles.Add(new ScriptBundle("~/bundles/MyCustomModal").Include(
+                    "~/Scripts/MyCustomModal.js"));
+
+            #endregion
+
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Practica.EF.Entities.Models;
+using Practica.EF.Logic.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,14 @@ namespace Practica.EF.Web.Controllers
 {
     public class CustomersController : Controller
     {
+        CustomersLogic customerLogic = new CustomersLogic();
+
         // GET: Customers
         public ActionResult Index()
         {
-            return View();
+            List<CustomersDTO> customers = customerLogic.GetAll();
+
+            return View(customers);
         }
 
         // GET: Customers/Details/5
@@ -23,7 +29,7 @@ namespace Practica.EF.Web.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            return View();
+            return Json(new { status = "ok", message = "Customer created." }, JsonRequestBehavior.AllowGet);
         }
 
         // POST: Customers/Create

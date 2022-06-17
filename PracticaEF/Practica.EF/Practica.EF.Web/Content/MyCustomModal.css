@@ -1,0 +1,119 @@
+﻿#mymodal-back {
+    display: flex;
+    background-color: rgba(0,0,0,.50);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    visibility: hidden;
+}
+
+.mymodal-container {
+    width: 500px;
+    height: 700px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+}
+
+.mymodal-header {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    background-color: #0093b4;
+    color: white;
+    justify-content: center;
+    padding-left: 10px;
+    padding-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mymodal-body {
+    min-height: 600px;
+    max-width: 100%;
+}
+
+.mymodal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    padding: 5px;
+    height: 50px;
+    background-color: #0093b4;
+}
+
+.mymodal-button {
+    margin: 4px;
+}
+
+.bg-in {
+    animation: bgIn 300ms forwards;
+}
+
+.bg-out {
+    animation: bgOut 300ms forwards;
+}
+
+.container-in {
+    animation: containerIn 300ms forwards;
+}
+
+.container-out {
+    animation: containerOut 300ms forwards;
+}
+
+@keyframes bgIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes bgOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes containerIn {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes containerOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
