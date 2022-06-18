@@ -1,5 +1,6 @@
 ﻿using Practica.EF.Common.Exceptions;
 using Practica.EF.Entities.Entities;
+using Practica.EF.Entities.Models;
 using Practica.EF.Logic.Logic;
 using System;
 using System.Drawing;
@@ -70,7 +71,7 @@ namespace Practica.EF.UI.Modals
                     return;
                 }
 
-                Customers customer = new Customers
+                CustomersDTO customer = new CustomersDTO
                 {
                     CustomerID = txtID.Text.Trim(),
                     CompanyName = txtCompanyName.Text.Trim(),

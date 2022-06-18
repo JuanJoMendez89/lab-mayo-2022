@@ -22,11 +22,11 @@ namespace Practica.EF.Logic.Logic
             _customersData = new CustomersData();
         }
 
-        public void Add(CustomersDTO entity)
+        public void Add(CustomersDTO customersDTO)
         {
             try
             {
-                Customers customer = new Customers().MapCustomersDto(entity);
+                Customers customer = customersDTO.ReverseMap();
 
                 ValidateCustomer(customer);
 
@@ -71,11 +71,11 @@ namespace Practica.EF.Logic.Logic
             return _customersData.GetByID(id).CreateDTO();
         }
 
-        public void Update(CustomersDTO entity)
+        public void Update(CustomersDTO customersDTO)
         {
             try
             {
-                Customers customer = new Customers().MapCustomersDto(entity);
+                Customers customer = customersDTO.ReverseMap();
 
                 ValidateCustomer(customer);
 

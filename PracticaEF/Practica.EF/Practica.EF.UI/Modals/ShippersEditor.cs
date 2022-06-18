@@ -1,4 +1,5 @@
 ﻿using Practica.EF.Entities.Entities;
+using Practica.EF.Entities.Models;
 using Practica.EF.Logic.Logic;
 using System;
 using System.Drawing;
@@ -53,7 +54,7 @@ namespace Practica.EF.UI.Modals
                     return;
                 }
 
-                Shippers shipper = new Shippers
+                ShippersDTO shipper = new ShippersDTO
                 {
                     ShipperID = (!_isEdit) ? 0 : _shipper.ShipperID,
                     CompanyName = txtCompanyName.Text.Trim(),

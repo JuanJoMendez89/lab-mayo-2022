@@ -24,7 +24,7 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-                Shippers shipper = new Shippers().MapShippersDTO(shippersDTO);
+                Shippers shipper = shippersDTO.ReverseMap(); ;
 
                 ValidateShipper(shipper);
 
@@ -81,7 +81,7 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-                Shippers shipper = new Shippers().MapShippersDTO(shippersDTO);
+                Shippers shipper = shippersDTO.ReverseMap();
 
                 ValidateShipper(shipper);
 

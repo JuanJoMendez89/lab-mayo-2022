@@ -145,6 +145,6 @@ function clearForm(form) {
 
 function extendValidator() {
     jQuery.validator.addMethod("noSpace", function (value, element) {
-        return value.indexOf(" ") < 0 && value != "";
+        return value.trim().length == 0;
     }, "Don't leave only spaces or spaces at start");
 }

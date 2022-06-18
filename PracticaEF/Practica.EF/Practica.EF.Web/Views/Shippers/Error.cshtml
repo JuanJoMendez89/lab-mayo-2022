@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Error</h2>
+<h3>@Model.ErrorMessage</h3>
+<hr />
+@Html.ActionLink("Shippers list", "Index")

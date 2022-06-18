@@ -1,0 +1,18 @@
+﻿@model Practica.EF.Entities.Models.ShippersDTO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete confirmation</h2>
+<div>
+    <h3>Shipper: @Model.CompanyName</h3>
+    <p>Are you sure to delete this shipper?</p>
+</div>
+<div>
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ShipperID })
+    |
+    @Html.ActionLink("Shippers list", "Index")
+</div>
+

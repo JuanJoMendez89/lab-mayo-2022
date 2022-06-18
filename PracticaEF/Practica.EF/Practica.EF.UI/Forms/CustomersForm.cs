@@ -1,4 +1,5 @@
 ﻿using Practica.EF.Entities.Entities;
+using Practica.EF.Entities.Models;
 using Practica.EF.Logic.Logic;
 using Practica.EF.UI.Modals;
 using System;
@@ -29,7 +30,7 @@ namespace Practica.EF.UI.Forms
         {
             try
             {
-                List<Customers> customers = _customerLogic.GetAll();
+                List<CustomersDTO> customers = _customerLogic.GetAll();
 
                 dgvGrid.DataSource = null;
                 dgvGrid.Rows.Clear();

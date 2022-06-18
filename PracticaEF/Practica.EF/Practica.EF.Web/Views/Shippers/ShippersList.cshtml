@@ -42,7 +42,8 @@
             </td>
             <td>
                 <button type="button" onclick="initEdit('@Json.Encode(item)')">Edit</button>
-                <button type="button" onclick="deleteShipper('@Json.Encode(item)')">Delete</button>
+                @Html.ActionLink("Delete", "DeleteConfirmation", new { id = item.ShipperID })
+                @*<button type="button" onclick="deleteShipper('@Json.Encode(item)')">Delete</button>*@
             </td>
         </tr>
     }
