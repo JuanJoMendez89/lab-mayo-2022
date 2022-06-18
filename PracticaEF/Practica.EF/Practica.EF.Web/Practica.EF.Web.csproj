@@ -141,6 +141,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MyCustomModal.css" />
+    <Content Include="Content\Shippers.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -161,6 +162,7 @@
     <Content Include="Scripts\MyCustomModal.js" />
     <Content Include="Scripts\Pages\CustomersList.js" />
     <Content Include="Content\Customers.css" />
+    <Content Include="Scripts\Pages\ShippersList.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -176,12 +178,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Customers\CustomersList.cshtml" />
-    <Content Include="Views\Customers\CustomersDelete.cshtml" />
+    <Content Include="Views\Shippers\ShippersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Shippers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

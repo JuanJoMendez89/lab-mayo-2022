@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Practica.EF.Entities.Models.ShippersDTO>
+
+@{
+    ViewBag.Title = "Shippers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/Pages/ShippersList")
+
+@Styles.Render("~/Styles/Shippers")
+
+<h2>Shippers</h2>
+
+<p>
+    <button type="button" onclick="initCreate()">Create New</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipperID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipperID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                <button type="button" onclick="initEdit('@Json.Encode(item)')">Edit</button>
+                <button type="button" onclick="deleteShipper('@Json.Encode(item)')">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="divCreate">
+    <div id="modal-create" class="container-fluid text-center">
+        <form id="create-form" class="needs-validation" data-toggle="validator">
+
+            <div class="row m-15">
+                <label class="col-xs-6">Company name</label>
+                <input class="col-xs-6 customer-form-input" type="text" name="CompanyName" maxlength="40" required />
+                <div class="text-right input-error"></div>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Phone</label>
+                <input type="text" class="col-xs-6 customer-form-input number-input" name="Phone" maxlength="24" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div id="divEdit">
+    <div id="modal-edit" class="container-fluid text-center">
+        <form id="edit-form">
+
+            <div class="d-none">
+                <input class="col-xs-6 customer-form-input" type="text" name="ShipperID" />
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Company name</label>
+                <input class="col-xs-6 customer-form-input" type="text" name="CompanyName" maxlength="40" required />
+                <div class="text-right input-error"></div>
+            </div>
+
+            <div class="row m-15">
+                <label class="col-xs-6">Phone</label>
+                <input type="text" class="col-xs-6 customer-form-input number-input" name="Phone" maxlength="24" />
+            </div>
+
+        </form>
+    </div>
+</div>
+

@@ -16,7 +16,7 @@ namespace Practica.EF.Logic.Extensions
             return new ShippersMapper().CreateDTO(shippers);
         }
 
-        public static Shippers MapToShippers(this ShippersDTO shippersDTO)
+        public static Shippers MapShippersDTO(this Shippers shippers, ShippersDTO shippersDTO)
         {
             return new ShippersMapper().ShippersDTOToShippers(shippersDTO);
         }

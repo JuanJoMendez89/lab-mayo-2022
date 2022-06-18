@@ -29,15 +29,20 @@ namespace Practica.EF.Web
 
 
             #region My bundles
-                bundles.Add(new ScriptBundle("~/Pages/CustomerList").Include(
-                      "~/Scripts/Pages/CustomersList.js"));
+            bundles.Add(new ScriptBundle("~/Pages/CustomerList").Include(
+                    "~/Scripts/Pages/CustomersList.js"));
 
+            bundles.Add(new ScriptBundle("~/Pages/ShippersList").Include(
+                "~/Scripts/Pages/ShippersList.js"));
 
-                bundles.Add(new ScriptBundle("~/bundles/MyCustomModal").Include(
+            bundles.Add(new ScriptBundle("~/bundles/MyCustomModal").Include(
                     "~/Scripts/MyCustomModal.js"));
 
             bundles.Add(new StyleBundle("~/Styles/Customers")
                 .Include("~/Content/Customers.css"));
+
+            bundles.Add(new StyleBundle("~/Styles/Shippers")
+                .Include("~/Content/Shippers.css"));
 
             #endregion
 

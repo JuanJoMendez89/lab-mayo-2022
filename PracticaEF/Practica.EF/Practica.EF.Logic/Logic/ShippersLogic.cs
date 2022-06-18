@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Practica.EF.Common.Exceptions;
 
 namespace Practica.EF.Logic.Logic
 {
@@ -23,7 +24,11 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-                _shippersData.Add(shippersDTO.MapToShippers());
+                Shippers shipper = new Shippers().MapShippersDTO(shippersDTO);
+
+                ValidateShipper(shipper);
+
+                _shippersData.Add(shipper);
             }
             catch (Exception ex)
             {
@@ -76,13 +81,23 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-                _shippersData.Update(shippersDTO.MapToShippers());
+                Shippers shipper = new Shippers().MapShippersDTO(shippersDTO);
+
+                ValidateShipper(shipper);
+
+                _shippersData.Update(shipper);
             }
             catch (Exception ex)
             {
                 throw ex.GetBaseException();
             }
 
+        }
+
+        private void ValidateShipper(Shippers Shipper)
+        {
+            if (String.IsNullOrEmpty(Shipper.CompanyName))
+                throw new InvalidFieldException("Field value is empty or invalid", "CompanyName");
         }
 
     }
