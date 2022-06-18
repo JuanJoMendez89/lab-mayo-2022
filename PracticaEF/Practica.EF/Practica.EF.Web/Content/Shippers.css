@@ -15,3 +15,8 @@
     display: none;
     color: red;
 }
+
+.form-error {
+    text-align: right !important;
+    color: red
+}

@@ -1,19 +1,44 @@
-﻿$(document).ready(function () {
-    console.log("ready")
+﻿const formValidations = {
+    errorClass: "form-error",
+    rules: {
+        CompanyName: {
+            required: true,
+            noSpace: true
+        },
+    },
+    highlight: function (element) {
+        $(element).closest('.control-group').removeClass('success').addClass('error');
+    },
+    success: function (element) {
+        element.text('').addClass('valid')
+            .closest('.control-group').removeClass('error').addClass('success');
+    }
+};
+
+$(document).ready(function () {
+    console.log("ready");
+
+    extendValidator();
+
+    $('#create-form').validate(formValidations);
+    $('#edit-form').validate(formValidations);
+
 });
 
 function initCreate() {
-    clearForm($('#create-form'));
+    const form = $('#create-form');
+    clearForm(form);
 
     Modal.Show({
         title: "Create new shipper",
         modalBody: '#modal-create',
         acceptFunction: () => {
-            let form = $('#create-form');
 
-            if (!validateFrom(form))
+            if (!form[0].checkValidity() || form.validate().invalidElements().length > 0) {
+                form.validate().element(form.find('input[name="CompanyName"]'));
                 return
-
+            }
+            
             saveShipper();
         },
         showCancelButton: true
@@ -22,8 +47,9 @@ function initCreate() {
 
 function initEdit(shipper) {
     const json = JSON.parse(shipper);
+    const form = $('#edit-form');
 
-    clearForm($('#edit-form'));
+    clearForm(form);
 
     $('#edit-form input[name="ShipperID"]').val(json.ShipperID);
     $('#edit-form input[name="CompanyName"]').val(json.CompanyName);
@@ -33,10 +59,11 @@ function initEdit(shipper) {
         title: "Edit customer",
         modalBody: '#modal-edit',
         acceptFunction: () => {
-            let form = $('#edit-form');
 
-            if (!validateFrom(form))
+            if (!form[0].checkValidity() || form.validate().invalidElements().length > 0) {
+                form.validate().element(form.find('input[name="CompanyName"]'));
                 return
+            }
 
             saveShipper(true);
         },
@@ -92,28 +119,14 @@ function deleteShipper(shipper) {
     }
 }
 
-function validateFrom(form) {
-    if (form[0].checkValidity() === false) {
-        let CompanyName = form.find('input[name="CompanyName"]');
-
-        if (!CompanyName.prop('validity').valid) {
-            CompanyName.css('border', '2px solid red');
-            CompanyName.next().text('Required field');
-            CompanyName.next().css('display', 'block');
-        }
-
-        return false;
-    }
-
-    return true;
-}
-
 function clearForm(form) {
-    let CompanyName = form.find('input[name="CompanyName"]');
-
-    $('.customer-form-input').val('');
-
-    CompanyName.css('border', '1px solid grey');
-    CompanyName.next().css('display', 'none');
-
+    form[0].reset();
+    form.validate().resetForm();
 }
+
+function extendValidator() {
+    jQuery.validator.addMethod("noSpace", function (value, element) {
+        return value.indexOf(" ") < 0 && value != "";
+    }, "Don't leave only spaces or spaces at start");
+}
+

@@ -1,18 +1,52 @@
-﻿$(document).ready(function () {
+﻿const formValidations = {
+    errorClass: "form-error",
+    rules: {
+        CustomerID: {
+            required: true,
+            noSpace: true
+        },
+        CompanyName: {
+            required: true,
+            noSpace: true
+        },
+        ContactName: {
+            required: true,
+            noSpace: true
+        },
+    },
+    highlight: function (element) {
+        $(element).closest('.control-group').removeClass('success').addClass('error');
+    },
+    success: function (element) {
+        element.text('').addClass('valid')
+            .closest('.control-group').removeClass('error').addClass('success');
+    }
+};
+
+$(document).ready(function () {
     console.log("ready")
+
+    extendValidator();
+
+    $('#create-form').validate(formValidations);
+    $('#edit-form').validate(formValidations);
 });
 
 function initCreate() {
-    clearForm($('#create-form'));
+    const form = $('#create-form');
+    clearForm(form);
 
     Modal.Show({
         title: "Create new customer",
         modalBody: '#modal-create',
         acceptFunction: () => {
-            let form = $('#create-form');
 
-            if (!validateFrom(form))
+            if (!form[0].checkValidity() || form.validate().invalidElements().length > 0) {
+                form.validate().element(form.find('input[name="CustomerID"]'));
+                form.validate().element(form.find('input[name="CompanyName"]'));
+                form.validate().element(form.find('input[name="ContactName"]'));
                 return
+            }
 
             saveCustomer();
         },
@@ -22,8 +56,9 @@ function initCreate() {
 
 function initEdit(customer) {
     const json = JSON.parse(customer);
+    const form = $('#edit-form');
 
-    clearForm($('#edit-form'));
+    clearForm(form);
 
     $('#edit-form input[name="CustomerID"]').val(json.CustomerID);
     $('#edit-form input[name="CompanyName"]').val(json.CompanyName);
@@ -41,10 +76,13 @@ function initEdit(customer) {
         title: "Edit customer",
         modalBody: '#modal-edit',
         acceptFunction: () => {
-            let form = $('#edit-form');
 
-            if (!validateFrom(form))
+            if (!form[0].checkValidity() || form.validate().invalidElements().length > 0) {
+                form.validate().element(form.find('input[name="CustomerID"]'));
+                form.validate().element(form.find('input[name="CompanyName"]'));
+                form.validate().element(form.find('input[name="ContactName"]'));
                 return
+            }
 
             saveCustomer(true);
         },
@@ -100,47 +138,13 @@ function deleteCustomer(customer) {
     }
 }
 
-function validateFrom(form) {
-    if (form[0].checkValidity() === false) {
-        let customerID = form.find('input[name="CustomerID"]');
-        let CompanyName = form.find('input[name="CompanyName"]');
-        let ContactName = form.find('input[name="ContactName"]');
-
-        if (!customerID.prop('validity').valid) {
-            customerID.css('border', '2px solid red');
-            customerID.next().text('Required field');
-            customerID.next().css('display', 'block');
-        }
-
-        if (!CompanyName.prop('validity').valid) {
-            CompanyName.css('border', '2px solid red');
-            CompanyName.next().text('Required field');
-            CompanyName.next().css('display', 'block');
-        }
-
-        if (!ContactName.prop('validity').valid) {
-            ContactName.css('border', '2px solid red');
-            ContactName.next().text('Required field');
-            ContactName.next().css('display', 'block');
-        }
-
-        return false;
-    }
-
-    return true;
+function clearForm(form) {
+    form[0].reset();
+    form.validate().resetForm();
 }
 
-function clearForm(form) {
-    let customerID = form.find('input[name="CustomerID"]');
-    let CompanyName = form.find('input[name="CompanyName"]');
-    let ContactName = form.find('input[name="ContactName"]');
-
-    $('.customer-form-input').val('');
-
-    customerID.css('border', '1px solid grey');
-    customerID.next().css('display', 'none');
-    CompanyName.css('border', '1px solid grey');
-    CompanyName.next().css('display', 'none');
-    ContactName.css('border', '1px solid grey');
-    ContactName.next().css('display', 'none');
+function extendValidator() {
+    jQuery.validator.addMethod("noSpace", function (value, element) {
+        return value.indexOf(" ") < 0 && value != "";
+    }, "Don't leave only spaces or spaces at start");
 }
