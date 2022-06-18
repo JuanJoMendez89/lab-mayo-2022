@@ -10,3 +10,8 @@
 .m-15 {
     margin: 15px;
 }
+
+.input-error {
+    display: none;
+    color:red;
+}

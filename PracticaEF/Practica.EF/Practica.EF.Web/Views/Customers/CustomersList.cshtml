@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Practica.EF.Entities.Models.CustomersDTO>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,7 +10,7 @@
 @Styles.Render("~/Styles/Customers")
 
 
-<h2>View</h2>
+<h2>Customers</h2>
 
 <p>
     <button type="button" onclick="initCreate()">Create New</button>
@@ -66,9 +66,7 @@
             </td>
             <td>
                 <button type="button" onclick="initEdit('@Json.Encode(item)')">Edit</button>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <button type="button" onclick="deleteCustomer('@Json.Encode(item)')">Delete</button>
             </td>
         </tr>
     }
@@ -77,61 +75,64 @@
 
 <div id="divCreate">
     <div id="modal-create" class="container-fluid text-center">
-        <form id="create-form">
+        <form id="create-form" class="needs-validation" data-toggle="validator">
 
-            <div class="row m-15">
+            <div class="row m-15 form-group">
                 <label class="col-xs-6">Customer ID</label>
-                <input class="col-xs-6" type="text" name="CustomerID" maxlength="5" />
+                <input class="col-xs-6 customer-form-input" type="text" name="CustomerID" maxlength="5"  />
+                <div class="text-right input-error"></div>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Company name</label>
-                <input class="col-xs-6" type="text" name="CompanyName" maxlength="40" />
+                <input class="col-xs-6 customer-form-input" type="text" name="CompanyName" maxlength="40" required />
+                <div class="text-right input-error"></div>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Contact name</label>
-                <input type="text" class="col-xs-6" name="ContactName" maxlength="30" />
+                <input type="text" class="col-xs-6 customer-form-input" name="ContactName" maxlength="30" required />
+                <div class="text-right input-error"></div>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Contact title</label>
-                <input type="text" class="col-xs-6" name="ContactTitle" maxlength="30" />
+                <input type="text" class="col-xs-6 customer-form-input" name="ContactTitle" maxlength="30" />
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Adress</label>
-                <input type="text" class="col-xs-6" name="Address" maxlength="60" />
+                <input type="text" class="col-xs-6 customer-form-input" name="Address" maxlength="60" />
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">City</label>
-                <input type="text" class="col-xs-6" name="City" maxlength="15" />
+                <input type="text" class="col-xs-6 customer-form-input" name="City" maxlength="15" />
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Region</label>
-                <input type="text" class="col-xs-6" name="Region" maxlength="15" />
+                <input type="text" class="col-xs-6 customer-form-input" name="Region" maxlength="15" />
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Postal code</label>
-                <input type="text" class="col-xs-6  number-input" name="PostalCode" maxlength="10" />
+                <input type="text" class="col-xs-6 customer-form-input number-input" name="PostalCode" maxlength="10" />
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Country</label>
-                <input type="text" class="col-xs-6" name="Country" maxlength="15" />
+                <input type="text" class="col-xs-6 customer-form-input" name="Country" maxlength="15" />
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Phone</label>
-                <input type="text" class="col-xs-6  number-input" name="Phone" maxlength="24" />
+                <input type="text" class="col-xs-6 customer-form-input number-input" name="Phone" maxlength="24" />
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Fax</label>
-                <input type="text" class="col-xs-6 number-input" name="Fax" maxlength="24" />
+                <input type="text" class="col-xs-6 customer-form-input number-input" name="Fax" maxlength="24" />
             </div>
 
         </form>
@@ -144,57 +145,60 @@
 
             <div class="row m-15">
                 <label class="col-xs-6">Customer ID</label>
-                <input class="col-xs-6" type="text" name="CustomerID" maxlength="5" disabled/>
+                <input class="col-xs-6 customer-form-input" type="text" name="CustomerID" maxlength="5" disabled required />
+                <div class="text-right input-error"></div>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Company name</label>
-                <input class="col-xs-6" type="text" name="CompanyName" maxlength="40"/>
+                <input class="col-xs-6 customer-form-input" type="text" name="CompanyName" maxlength="40" required />
+                <div class="text-right input-error"></div>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Contact name</label>
-                <input type="text" class="col-xs-6" name="ContactName" maxlength="30"/>
+                <input type="text" class="col-xs-6 customer-form-input" name="ContactName" maxlength="30" required />
+                <div class="text-right input-error"></div>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Contact title</label>
-                <input type="text" class="col-xs-6" name="ContactTitle" maxlength="30"/>
+                <input type="text" class="col-xs-6 customer-form-input" name="ContactTitle" maxlength="30"/>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Adress</label>
-                <input type="text" class="col-xs-6" name="Address" maxlength="60"/>
+                <input type="text" class="col-xs-6 customer-form-input" name="Address" maxlength="60"/>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">City</label>
-                <input type="text" class="col-xs-6" name="City" maxlength="15"/>
+                <input type="text" class="col-xs-6 customer-form-input" name="City" maxlength="15"/>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Region</label>
-                <input type="text" class="col-xs-6" name="Region" maxlength="15"/>
+                <input type="text" class="col-xs-6 customer-form-input" name="Region" maxlength="15"/>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Postal code</label>
-                <input type="text" class="col-xs-6  number-input" name="PostalCode" maxlength="10"/>
+                <input type="text" class="col-xs-6 customer-form-input  number-input" name="PostalCode" maxlength="10"/>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Country</label>
-                <input type="text" class="col-xs-6" name="Country" maxlength="15"/>
+                <input type="text" class="col-xs-6 customer-form-input" name="Country" maxlength="15"/>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Phone</label>
-                <input type="text" class="col-xs-6  number-input" name="Phone" maxlength="24"/>
+                <input type="text" class="col-xs-6 customer-form-input number-input" name="Phone" maxlength="24"/>
             </div>
 
             <div class="row m-15">
                 <label class="col-xs-6">Fax</label>
-                <input type="text" class="col-xs-6 number-input" name="Fax" maxlength="24"/>
+                <input type="text" class="col-xs-6 customer-form-input number-input" name="Fax" maxlength="24"/>
             </div>
 
         </form>

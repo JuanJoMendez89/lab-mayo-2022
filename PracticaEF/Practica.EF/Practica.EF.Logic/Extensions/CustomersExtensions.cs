@@ -15,8 +15,9 @@ namespace Practica.EF.Logic.Extensions
             return new CustomersMapper().CreateCustomersDTO(customers);
         }
 
-        public static Customers MapToCustomers(this CustomersDTO customerDTO) {
+        public static Customers MapCustomersDto(this Customers customer, CustomersDTO customerDTO) {
             return new CustomersMapper().CustomersDTOToCustomers(customerDTO);
         }
+
     }
 }

@@ -26,7 +26,11 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-                _customersData.Add(entity.MapToCustomers());
+                Customers customer = new Customers().MapCustomersDto(entity);
+
+                ValidateCustomer(customer);
+
+                _customersData.Add(customer);
             }
             catch (Exception ex)
             {
@@ -71,7 +75,11 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-                _customersData.Update(entity.MapToCustomers());
+                Customers customer = new Customers().MapCustomersDto(entity);
+
+                ValidateCustomer(customer);
+
+                _customersData.Update(customer);
             }
             catch (Exception ex)
             {
@@ -79,5 +87,17 @@ namespace Practica.EF.Logic.Logic
             }
 
         }
+
+        private void ValidateCustomer(Customers customer) {
+            if (String.IsNullOrEmpty(customer.CustomerID)) 
+                throw new InvalidFieldException("Field value is empty or invalid", "CustomerID");
+
+            if (String.IsNullOrEmpty(customer.ContactName))
+                throw new InvalidFieldException("Field value is empty or invalid", "ContactName");
+
+            if (String.IsNullOrEmpty(customer.CompanyName)) 
+                throw new InvalidFieldException("Field value is empty or invalid", "CompanyName");
+        }
+
     }
 }

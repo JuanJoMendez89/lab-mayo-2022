@@ -3,6 +3,7 @@ using Practica.EF.Logic.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,95 +18,58 @@ namespace Practica.EF.Web.Controllers
         {
             List<CustomersDTO> customers = customerLogic.GetAll();
 
-            return View(customers);
+            return View("CustomersList", customers);
         }
 
-        // GET: Customers/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Customers/Create
-        public ActionResult Create()
-        {
-            return Json(new { status = "ok", message = "Customer created." }, JsonRequestBehavior.AllowGet);
-        }
-
-        // POST: Customers/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CustomersDTO customer)
         {
             try
             {
-                // TODO: Add insert logic here
+                customerLogic.Add(customer);
 
-                return RedirectToAction("Index");
+                return Json(new { status = "ok", message = "Customer created." }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { status = "error", message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
-        // PUT: Customers/Update
+
+        // PUT: Customers
         [HttpPut]
         public ActionResult Update(CustomersDTO customer)
         {
             try
             {
                 customerLogic.Update(customer);
-
+                
                 return Json(new { status = "ok", message = "Customer updated." }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { status = "error", message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
-        // GET: Customers/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Customers/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [HttpDelete]
+        public ActionResult Delete(string id)
         {
             try
             {
-                // TODO: Add update logic here
+                customerLogic.Delete(id);
 
-                return RedirectToAction("Index");
+                return Json(new { status = "ok", message = "Customer deleted." }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { status = "error", message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
-        // GET: Customers/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Customers/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
