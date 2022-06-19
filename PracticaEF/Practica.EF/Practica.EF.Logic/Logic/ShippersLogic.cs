@@ -96,7 +96,7 @@ namespace Practica.EF.Logic.Logic
 
         private void ValidateShipper(Shippers Shipper)
         {
-            if (String.IsNullOrEmpty(Shipper.CompanyName))
+            if (String.IsNullOrEmpty(Shipper.CompanyName) || String.IsNullOrWhiteSpace(Shipper.CompanyName))
                 throw new InvalidFieldException("Field value is empty or invalid", "CompanyName");
         }
 

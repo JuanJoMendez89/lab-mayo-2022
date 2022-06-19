@@ -12,7 +12,7 @@
 <h2>Shippers</h2>
 
 <p>
-    <button type="button" onclick="initCreate()">Create New</button>
+    <a href="#" class="form-anchor" onclick="initCreate()">Create New</a>
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,8 @@
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
-                <button type="button" onclick="initEdit('@Json.Encode(item)')">Edit</button>
+                <a href="#" class="form-anchor" onclick="initEdit('@Json.Encode(item)')">Edit</a> |
                 @Html.ActionLink("Delete", "DeleteConfirmation", new { id = item.ShipperID })
-                @*<button type="button" onclick="deleteShipper('@Json.Encode(item)')">Delete</button>*@
             </td>
         </tr>
     }

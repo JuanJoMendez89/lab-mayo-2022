@@ -13,7 +13,7 @@
 <h2>Customers</h2>
 
 <p>
-    <button type="button" onclick="initCreate()">Create New</button>
+    <a href="#" class="form-anchor" onclick="initCreate()">Create New</a>
 </p>
 <table class="table">
     <tr>
@@ -65,8 +65,11 @@
                 @Html.DisplayFor(modelItem => item.Region)
             </td>
             <td>
-                <button type="button" onclick="initEdit('@Json.Encode(item)')">Edit</button>
-                <button type="button" onclick="deleteCustomer('@Json.Encode(item)')">Delete</button>
+                <div class="row">
+                    <a href="#" class="form-anchor" onclick="initEdit('@Json.Encode(item)')">Edit</a> |
+                    @Html.ActionLink("Delete", "DeleteConfirmation", new { id = item.CustomerID.Trim() })
+                </div>
+
             </td>
         </tr>
     }
@@ -142,7 +145,7 @@
 
             <div class="row m-15 control-group text-right">
                 <label class="col-xs-6 text-left">Customer ID</label>
-                <input class="col-xs-6 customer-form-input" type="text" name="CustomerID" maxlength="5" disabled required />
+                <input class="col-xs-6 customer-form-input" type="text" name="CustomerID"  maxlength="5" readonly required />
             </div>
 
             <div class="row m-15 control-group text-right">

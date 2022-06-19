@@ -68,7 +68,13 @@ namespace Practica.EF.Web.Controllers
             }
             catch (Exception ex)
             {
-                return RedirectToAction("Error", "Shippers", new { error = ex.Message });
+                if (ex.GetType().Name == "SqlException") {
+                    return RedirectToAction("Error", "Shippers", new { error = "Can't delete. There're orders bound this shipper." });
+                }
+                else
+                { 
+                  return RedirectToAction("Error", "Shippers", new { error = ex.Message });
+                }
             }
         }
 

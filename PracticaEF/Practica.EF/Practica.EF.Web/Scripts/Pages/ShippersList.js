@@ -23,6 +23,9 @@ $(document).ready(function () {
     $('#create-form').validate(formValidations);
     $('#edit-form').validate(formValidations);
 
+    $('.form-anchor').on('click', function (e) {
+        e.preventDefault();
+    });
 });
 
 function initCreate() {
@@ -34,7 +37,7 @@ function initCreate() {
         modalBody: '#modal-create',
         acceptFunction: () => {
 
-            if (!form[0].checkValidity() || form.validate().invalidElements().length > 0) {
+            if (!form.valid()) {
                 form.validate().element(form.find('input[name="CompanyName"]'));
                 return
             }
@@ -60,7 +63,7 @@ function initEdit(shipper) {
         modalBody: '#modal-edit',
         acceptFunction: () => {
 
-            if (!form[0].checkValidity() || form.validate().invalidElements().length > 0) {
+            if (!form.valid()) {
                 form.validate().element(form.find('input[name="CompanyName"]'));
                 return
             }
@@ -126,7 +129,11 @@ function clearForm(form) {
 
 function extendValidator() {
     jQuery.validator.addMethod("noSpace", function (value, element) {
-        return value.trim().length > 0;
+        if (value[0] == " " || value.trim().length < 1)
+            return false
+        else
+            return true
     }, "Don't leave only spaces or spaces at start");
+
 }
 

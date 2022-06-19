@@ -1,5 +1,6 @@
 ﻿using Practica.EF.Entities.Models;
 using Practica.EF.Logic.Logic;
+using Practica.EF.Web.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,20 +56,39 @@ namespace Practica.EF.Web.Controllers
             }
         }
 
-        [HttpDelete]
+        public ActionResult DeleteConfirmation(string id)
+        {
+            return View("Delete", customerLogic.GetByID(id));
+
+        }
+
         public ActionResult Delete(string id)
         {
             try
             {
                 customerLogic.Delete(id);
 
-                return Json(new { status = "ok", message = "Customer deleted." }, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json(new { status = "error", message = ex.Message }, JsonRequestBehavior.AllowGet);
+                if (ex.GetType().Name == "SqlException")
+                {
+                    return RedirectToAction("Error", "Customers", new { error = "Can't delete. There're orders bound this customer." });
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Customers", new { error = ex.Message });
+                }
             }
+        }
+
+        public ActionResult Error(string error)
+        {
+            ErrorViewModel errorViewModel = new ErrorViewModel();
+            errorViewModel.ErrorMessage = error;
+
+            return View(errorViewModel);
         }
 
     }

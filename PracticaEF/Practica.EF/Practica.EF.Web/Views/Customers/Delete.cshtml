@@ -1,0 +1,17 @@
+﻿@model Practica.EF.Entities.Models.CustomersDTO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete confirmation</h2>
+<div>
+    <h3>Customer: @Model.ContactName</h3>
+    <p>Are you sure to delete this customer?</p>
+</div>
+<div>
+    @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerID })
+    |
+    @Html.ActionLink("Customers list", "Index")
+</div>

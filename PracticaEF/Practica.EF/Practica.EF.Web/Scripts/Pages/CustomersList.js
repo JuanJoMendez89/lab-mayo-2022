@@ -3,7 +3,8 @@
     rules: {
         CustomerID: {
             required: true,
-            noSpace: true
+            noSpace: true,
+            minLength: true
         },
         CompanyName: {
             required: true,
@@ -30,6 +31,10 @@ $(document).ready(function () {
 
     $('#create-form').validate(formValidations);
     $('#edit-form').validate(formValidations);
+
+    $('.form-anchor').on('click', function (e) {
+        e.preventDefault();
+    });
 });
 
 function initCreate() {
@@ -41,7 +46,10 @@ function initCreate() {
         modalBody: '#modal-create',
         acceptFunction: () => {
 
-            if (!form[0].checkValidity() || form.validate().invalidElements().length > 0) {
+
+
+            //if (!form[0].checkValidity() || form[0].validate().invalidElements().length > 0) {
+            if (!form.valid()) {
                 form.validate().element(form.find('input[name="CustomerID"]'));
                 form.validate().element(form.find('input[name="CompanyName"]'));
                 form.validate().element(form.find('input[name="ContactName"]'));
@@ -97,8 +105,6 @@ function saveCustomer(isEdit = false) {
     const json = JSON.parse(JSON.stringify(Object.fromEntries(formData)));
     const url = !isEdit ? "/Customers/Create" : "/Customers/Update";
 
-    json.CustomerID = !isEdit ? $('#create-form input[name="CustomerID"]').val() : $('#edit-form input[name="CustomerID"]').val();
-
     $.ajax({
         url: url,
         method: method,
@@ -118,26 +124,6 @@ function saveCustomer(isEdit = false) {
     })
 }
 
-function deleteCustomer(customer) {
-    const json = JSON.parse(customer);
-    const confirmation = confirm(`¿Está seguro que desea eliminar a ${json.ContactName}?`);
-
-    if (confirmation) {
-        $.ajax({
-            url: `/Customers/Delete/${json.CustomerID}`,
-            method: "DELETE",
-            success: function (res) {
-                setTimeout(function () {
-                    window.location.href = "/Customers";
-                }, 300);
-            },
-            error: function (err) {
-                alert("Can't delete. There're orders bound to this customer.");
-            }
-        })
-    }
-}
-
 function clearForm(form) {
     form[0].reset();
     form.validate().resetForm();
@@ -145,6 +131,16 @@ function clearForm(form) {
 
 function extendValidator() {
     jQuery.validator.addMethod("noSpace", function (value, element) {
-        return value.trim().length == 0;
+        if (value[0] == " " || value.trim().length < 1)
+            return false
+        else
+            return true
     }, "Don't leave only spaces or spaces at start");
+
+    jQuery.validator.addMethod("minLength", function (value, element) {
+        if (value.trim().length !=  5)
+            return false
+        else
+            return true
+    }, "Minimun length must be 5");
 }

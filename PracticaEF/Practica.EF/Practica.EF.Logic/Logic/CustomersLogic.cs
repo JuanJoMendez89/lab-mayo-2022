@@ -27,6 +27,7 @@ namespace Practica.EF.Logic.Logic
             try
             {
                 Customers customer = customersDTO.ReverseMap();
+                customer.CustomerID = customer.CustomerID.TrimEnd();
 
                 ValidateCustomer(customer);
 
@@ -89,13 +90,13 @@ namespace Practica.EF.Logic.Logic
         }
 
         private void ValidateCustomer(Customers customer) {
-            if (String.IsNullOrEmpty(customer.CustomerID)) 
+            if (String.IsNullOrEmpty(customer.CustomerID) || String.IsNullOrWhiteSpace(customer.CustomerID) || customer.CustomerID.Length != 5)
                 throw new InvalidFieldException("Field value is empty or invalid", "CustomerID");
 
-            if (String.IsNullOrEmpty(customer.ContactName))
+            if (String.IsNullOrEmpty(customer.ContactName) || String.IsNullOrWhiteSpace(customer.ContactName))
                 throw new InvalidFieldException("Field value is empty or invalid", "ContactName");
 
-            if (String.IsNullOrEmpty(customer.CompanyName)) 
+            if (String.IsNullOrEmpty(customer.CompanyName) || String.IsNullOrWhiteSpace(customer.CompanyName)) 
                 throw new InvalidFieldException("Field value is empty or invalid", "CompanyName");
         }
 
