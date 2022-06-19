@@ -35,6 +35,8 @@ $(document).ready(function () {
     $('.form-anchor').on('click', function (e) {
         e.preventDefault();
     });
+
+    initFormEvs();
 });
 
 function initCreate() {
@@ -143,4 +145,17 @@ function extendValidator() {
         else
             return true
     }, "Minimun length must be 5");
+}
+
+function initFormEvs() {
+    $('input[name="CustomerID"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="CompanyName"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="ContactName"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="ContactTitle"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="City"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="Region"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="PostalCode"]').on('keypress', function (e) { OnlyNumbers(e) });
+    $('input[name="Country"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="Phone"]').on('keypress', function (e) { OnlyNumbersParentheses(e) });
+    $('input[name="Fax"]').on('keypress', function (e) { OnlyNumbersParentheses(e) });
 }

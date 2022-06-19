@@ -29,6 +29,9 @@ namespace Practica.EF.Web
 
 
             #region My bundles
+            bundles.Add(new ScriptBundle("~/Pages/Common").Include(
+                "~/Scripts/Pages/Common.js"));
+
             bundles.Add(new ScriptBundle("~/Pages/CustomerList").Include(
                     "~/Scripts/Pages/CustomersList.js"));
 

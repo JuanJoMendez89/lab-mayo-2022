@@ -133,7 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Shared\Error.cs" />
+    <Compile Include="Models\Shared\ErrorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +161,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MyCustomModal.js" />
+    <Content Include="Scripts\Pages\Common.js" />
     <Content Include="Scripts\Pages\CustomersList.js" />
     <Content Include="Content\Customers.css" />
     <Content Include="Scripts\Pages\ShippersList.js" />

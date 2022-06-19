@@ -26,6 +26,9 @@ $(document).ready(function () {
     $('.form-anchor').on('click', function (e) {
         e.preventDefault();
     });
+
+    initFormEvs();
+
 });
 
 function initCreate() {
@@ -137,3 +140,7 @@ function extendValidator() {
 
 }
 
+function initFormEvs() {
+    $('input[name="CompanyName"]').on('keypress', function (e) { OnlyLetters(e) });
+    $('input[name="Phone"]').on('keypress', function (e) { OnlyNumbersParentheses(e) });
+}
