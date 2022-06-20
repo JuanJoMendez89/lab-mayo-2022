@@ -53,6 +53,9 @@ namespace Practica.EF.Web.Api.Controllers
         {
             try
             {
+                if (customer.CustomerID == null)
+                    return BadRequest("CustomerID is empty or invalid");
+
                 _customersService.Add(customer);
 
                 return Ok("Customer created successfully!!");

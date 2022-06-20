@@ -95,8 +95,11 @@ namespace Practica.EF.Logic.Logic
         }
 
         private void ValidateCustomer(Customers customer) {
-            if (String.IsNullOrEmpty(customer.CustomerID) || String.IsNullOrWhiteSpace(customer.CustomerID) || customer.CustomerID.Length != 5)
+            if (String.IsNullOrEmpty(customer.CustomerID) || String.IsNullOrWhiteSpace(customer.CustomerID))
                 throw new InvalidFieldException("Field value is empty or invalid", "CustomerID");
+
+            if (customer.CustomerID.Length != 5)
+                throw new InvalidFieldException("CustomerID length value must be 5", "CustomerID");
 
             if (String.IsNullOrEmpty(customer.ContactName) || String.IsNullOrWhiteSpace(customer.ContactName))
                 throw new InvalidFieldException("Field value is empty or invalid", "ContactName");
