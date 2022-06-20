@@ -1,0 +1,23 @@
+﻿@model Practica.EF.Entities.Models.Pokemon
+
+@{
+    ViewBag.Title = "Pokemon";
+}
+
+<h2>Pokemon</h2>
+
+<div>
+    <label>Name: @Model.name</label>
+</div>
+<div>
+    <label>Types:</label>
+    @foreach (var item in Model.types)
+    {
+        <p>- @item.type.name</p>
+    }
+</div>
+<div>
+    <img src="@Model.sprites.front_default" />
+</div>
+@Html.ActionLink("Search Pokemon", "Index", "Home")
+
