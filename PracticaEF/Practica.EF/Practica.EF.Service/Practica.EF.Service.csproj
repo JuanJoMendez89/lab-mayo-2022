@@ -4,16 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CB885959-315B-416A-A7AA-04AB3F86C79E}</ProjectGuid>
+    <ProjectGuid>{F35FCA0A-EA0B-441A-81A6-1497822E2735}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Practica.EF.Entities</RootNamespace>
-    <AssemblyName>Practica.EF.Entities</AssemblyName>
+    <RootNamespace>Practica.EF.Service</RootNamespace>
+    <AssemblyName>Practica.EF.Service</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,18 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\Customers.cs" />
-    <Compile Include="Models\CustomerEdit.cs" />
-    <Compile Include="Models\CustomersDTO.cs" />
-    <Compile Include="Models\ShippersCreate.cs" />
-    <Compile Include="Models\ShippersDTO.cs" />
+    <Compile Include="Interfaces\ICustomersService.cs" />
+    <Compile Include="Interfaces\IShippersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\Shippers.cs" />
+    <Compile Include="Services\CustomersService.cs" />
+    <Compile Include="Services\ShippersService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
+      <Project>{CB885959-315B-416A-A7AA-04AB3F86C79E}</Project>
+      <Name>Practica.EF.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Practica.EF.Logic\Practica.EF.Logic.csproj">
+      <Project>{CF8B9933-11F1-4E5F-9B89-0F54735F4DA0}</Project>
+      <Name>Practica.EF.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

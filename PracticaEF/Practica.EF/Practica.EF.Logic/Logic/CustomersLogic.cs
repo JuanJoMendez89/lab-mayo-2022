@@ -69,7 +69,12 @@ namespace Practica.EF.Logic.Logic
 
         public CustomersDTO GetByID(string id)
         {
-            return _customersData.GetByID(id).CreateDTO();
+            Customers customer = _customersData.GetByID(id);
+
+            if (customer == null)
+                throw new KeyNotFoundException("Customer not found");
+
+            return customer.CreateDTO();
         }
 
         public void Update(CustomersDTO customersDTO)

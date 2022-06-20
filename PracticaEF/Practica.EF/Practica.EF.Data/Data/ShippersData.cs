@@ -77,6 +77,9 @@ namespace Practica.EF.Data.Data
 
             try
             {
+                if (shipper == null)
+                    throw new KeyNotFoundException("Customer not found");
+
                 shipper.CompanyName = entity.CompanyName;
                 shipper.Phone = entity.Phone;
 
@@ -84,7 +87,10 @@ namespace Practica.EF.Data.Data
             }
             catch (Exception ex)
             {
-                _context.Entry(shipper).State = EntityState.Unchanged;
+                if (ex.GetType() == typeof(ArgumentNullException)) {
+                    _context.Entry(shipper).State = EntityState.Unchanged;
+                }
+
                 throw ex.GetBaseException();
             }
 

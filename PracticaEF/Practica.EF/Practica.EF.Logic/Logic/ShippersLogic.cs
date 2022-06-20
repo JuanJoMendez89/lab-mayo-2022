@@ -69,7 +69,12 @@ namespace Practica.EF.Logic.Logic
         {
             try
             {
-                return _shippersData.GetByID(Convert.ToInt32(id)).CreateDTO();
+                Shippers shipper = _shippersData.GetByID(Convert.ToInt32(id));
+
+                if (shipper == null)
+                    throw new KeyNotFoundException("Shipper not found");
+
+                return shipper.CreateDTO();
             }
             catch (Exception ex)
             {

@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Common", "Pract
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Web", "Practica.EF.Web\Practica.EF.Web.csproj", "{5FF15A2A-57EF-4A9C-AA0C-F9E45418436C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Web.Api", "Practica.EF.Web.Api\Practica.EF.Web.Api.csproj", "{41CEA46D-1B4A-41C6-861B-52B34415CA38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Service", "Practica.EF.Service\Practica.EF.Service.csproj", "{F35FCA0A-EA0B-441A-81A6-1497822E2735}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{5FF15A2A-57EF-4A9C-AA0C-F9E45418436C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FF15A2A-57EF-4A9C-AA0C-F9E45418436C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FF15A2A-57EF-4A9C-AA0C-F9E45418436C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CEA46D-1B4A-41C6-861B-52B34415CA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CEA46D-1B4A-41C6-861B-52B34415CA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CEA46D-1B4A-41C6-861B-52B34415CA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CEA46D-1B4A-41C6-861B-52B34415CA38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35FCA0A-EA0B-441A-81A6-1497822E2735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35FCA0A-EA0B-441A-81A6-1497822E2735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35FCA0A-EA0B-441A-81A6-1497822E2735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35FCA0A-EA0B-441A-81A6-1497822E2735}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
