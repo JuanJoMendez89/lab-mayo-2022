@@ -1,15 +1,18 @@
 <h3 mat-dialog-title>Shipper</h3>
 <div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Company name</mat-label>
-    <input matInput [(ngModel)]="data.CompanyName">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Phone</mat-label>
-    <input matInput [(ngModel)]="data.Phone">
-  </mat-form-field>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Company name</mat-label>
+      <input matInput id="CompanyName" formControlName="CompanyName"  required>
+    </mat-form-field>
+    <div *ngIf="!form.get('CompanyName')?.valid && form.get('CompanyName')?.touched" class="validation-label">Required field</div>
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input matInput id="Phone" formControlName="Phone" >
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+  <button mat-button (click)="accept()" [disabled]="!form.valid">Save</button>
 </div>

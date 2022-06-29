@@ -4,6 +4,7 @@ import { ShippersService } from './services/shippers.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { EditorComponent } from './components/editor/editor.component';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-shippers',
@@ -36,6 +37,27 @@ export class ShippersComponent implements OnInit {
     });
   }
 
+  addShipper(): void{
+    const dialogRef = this.dialog.open(EditorComponent, {
+      width: '250px',
+      data: { ShipperID: 0, CompanyName: "", Phone: "" }
+    });
+
+    dialogRef.afterClosed().subscribe(data => {
+      if(data !== undefined){
+        let shipper: Shipper = new Shipper(data.ShipperID, data.CompanyName, data.Phone);
+
+        this.shippersService.Add(shipper).subscribe((res) =>{
+          this.loadGrid();
+        },
+        (e)=>{
+          console.log(e);
+          alert("Ocurrió un error");
+        });
+      }
+    });
+  }
+
   editShipper(shipperID: string, companyName: string, phone: string): void{
     const dialogRef = this.dialog.open(EditorComponent, {
       width: '250px',
@@ -43,8 +65,6 @@ export class ShippersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(data => {
-      console.log('The dialog was closed');
-
       if(data !== undefined){
         let shipper: Shipper = new Shipper(data.ShipperID, data.CompanyName, data.Phone);
 
@@ -53,14 +73,31 @@ export class ShippersComponent implements OnInit {
         },
         (e)=>{
           console.log(e);
-          alert(JSON.stringify(e));
+          alert("Ocurrió un error");
         });
       }
     });
   }
 
-  deleteShipper(shipperID: string): void{
-    
+  deleteShipper(shipperID: number, companyName: string): void{
+    const confirmRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: { Title: `Delete shipper: ${companyName}`, Message: 'Are you sure you want to delete this shipper?'}
+    });
+
+    confirmRef.afterClosed().subscribe(data => {
+      console.log(data)
+      if(data !== undefined){
+        this.shippersService.Delete(shipperID).subscribe((res) =>{
+          this.loadGrid();
+        },
+        (e)=>{
+          if(e.error.Message !== undefined) alert(e.error.Message);
+          else alert('An error has ocurred');
+        });
+
+      }
+    });
   }
 
 }

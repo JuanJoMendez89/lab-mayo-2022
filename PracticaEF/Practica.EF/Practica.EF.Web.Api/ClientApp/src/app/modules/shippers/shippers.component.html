@@ -1,7 +1,7 @@
 <div class="mat-elevation-z8 table-container">
     <div class="new-container">
         <h2>Shippers list</h2>
-        <button mat-mini-fab color="primary" matTooltip="New shipper" aria-label="New shipper" >
+        <button mat-mini-fab color="primary" matTooltip="New shipper" aria-label="New shipper" (click)="addShipper()" >
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -32,7 +32,7 @@
                         </button>
                     </div>
                     <div class="grid-button">
-                        <button mat-mini-fab color="primary" matTooltip="Delete shipper" aria-label="Delete shipper" (click)="deleteShipper(element.ShipperID)" >
+                        <button mat-mini-fab color="primary" matTooltip="Delete shipper" aria-label="Delete shipper" (click)="deleteShipper(element.ShipperID, element.CompanyName)" >
                         <mat-icon>delete</mat-icon>
                         </button>
                     </div>
