@@ -58,10 +58,10 @@ export class ShippersComponent implements OnInit {
     });
   }
 
-  editShipper(shipperID: string, companyName: string, phone: string): void{
+  editShipper(shipper: Shipper): void{
     const dialogRef = this.dialog.open(EditorComponent, {
       width: '250px',
-      data: { ShipperID: shipperID, CompanyName: companyName, Phone: phone }
+      data: { ShipperID: shipper.ShipperID, CompanyName: shipper.CompanyName, Phone: shipper.Phone }
     });
 
     dialogRef.afterClosed().subscribe(data => {

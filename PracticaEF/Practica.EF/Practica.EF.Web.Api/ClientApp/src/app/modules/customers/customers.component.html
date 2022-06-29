@@ -1,7 +1,7 @@
 <div class="mat-elevation-z8 table-container">
     <div class="new-container">
         <h2>Customers list</h2>
-        <button mat-mini-fab color="primary" matTooltip="New customer" aria-label="New customer" >
+        <button mat-mini-fab color="primary" matTooltip="New customer" aria-label="New customer"  (click)="addCustomer()">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -33,12 +33,12 @@
             <ng-container>
                 <div class="button-container">
                     <div class="grid-button">
-                        <button mat-mini-fab color="primary" matTooltip="Edit customer" aria-label="Edit customer" (click)="editCustomer(element.CustomerID)" >
+                        <button mat-mini-fab color="primary" matTooltip="Edit customer" aria-label="Edit customer" (click)="editCustomer(element)" >
                         <mat-icon>edit</mat-icon>
                         </button>
                     </div>
                     <div class="grid-button">
-                        <button mat-mini-fab color="primary" matTooltip="Delete customer" aria-label="Delete customer" (click)="deleteCustomer(element.CustomerID)" >
+                        <button mat-mini-fab color="primary" matTooltip="Delete customer" aria-label="Delete customer" (click)="deleteCustomer(element.CustomerID, element.ContactName)" >
                         <mat-icon>delete</mat-icon>
                         </button>
                     </div>

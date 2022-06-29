@@ -1,6 +1,7 @@
 import { CustomersComponent } from './customers.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CustomersRoutingModule } from './customers-routing.module';
 import { MatTableModule } from '@angular/material/table';
@@ -25,7 +26,9 @@ import { EditorComponent } from './components/editor/editor.component'
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CustomersModule { }
